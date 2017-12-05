@@ -195,6 +195,52 @@ end</layout>
           <layout>fun All votes = (List.length votes = W)</layout>
         </ml>
       </block>
+      <block id="ID1530021386">
+        <id>MBT</id>
+        <ml id="ID1530021696">val mbtcpnlibpath = &quot;c:/work/mbtcpnlib/&quot;;
+          <layout>val mbtcpnlibpath = &quot;c:/work/mbtcpnlib/&quot;;</layout>
+        </ml>
+        <color id="ID1530022575">
+          <id>TCOutEvent</id>
+          <union>
+            <unionfield>
+              <id>WDecision</id>
+              <type>
+                <id>WorkerxDecision</id>
+              </type>
+            </unionfield>
+            <unionfield>
+              <id>SDecision</id>
+              <type>
+                <id>Decision</id>
+              </type>
+            </unionfield>
+          </union>
+          <layout>colset TCOutEvent = union WDecision : WorkerxDecision + SDecision : Decision;</layout>
+        </color>
+        <color id="ID1530022012">
+          <id>TCEvent</id>
+          <union>
+            <unionfield>
+              <id>InEvent</id>
+              <type>
+                <id>WorkerxVote</id>
+              </type>
+            </unionfield>
+            <unionfield>
+              <id>OutEvent</id>
+              <type>
+                <id>TCOutEvent</id>
+              </type>
+            </unionfield>
+          </union>
+          <layout>colset TCEvent = union InEvent : WorkerxVote + OutEvent : TCOutEvent;</layout>
+        </color>
+        <use id="ID1530021848">
+          <ml>(mbtcpnlibpath^&quot;config/simconfig.sml&quot;)</ml>
+          <layout>use (mbtcpnlibpath^&quot;config/simconfig.sml&quot;);</layout>
+        </use>
+      </block>
     </globbox>
     <page id="ID6">
       <pageattr name="Commit"/>
@@ -4139,8 +4185,8 @@ else empty</text>
     </options>
     <binders>
       <cpnbinder id="ID1530011512"
-                 x="512"
-                 y="48"
+                 x="766"
+                 y="42"
                  width="977"
                  height="667">
         <sheets>
@@ -4193,11 +4239,11 @@ else empty</text>
           </cpnsheet>
         </sheets>
         <zorder>
-          <position value="2"/>
           <position value="4"/>
+          <position value="2"/>
+          <position value="3"/>
           <position value="1"/>
           <position value="0"/>
-          <position value="3"/>
         </zorder>
       </cpnbinder>
     </binders>
@@ -4210,22 +4256,20 @@ else empty</text>
         <node idref="ID1429909289"
               pageinstanceidref="ID1429909380"/>
         <declaration name="Init">
-          <ml id="ID1530017080">fun init () = ();
-            <layout>fun init () = ();</layout>
+          <ml id="ID1530017080">fun init () = SimConfig.init();
+            <layout>fun init () = SimConfig.init();</layout>
           </ml>
         </declaration>
         <declaration name="Predicate">
           <ml id="ID1530017084">fun pred (bindelem) = 
 let
   fun predBindElem (Coordinator&apos;SendCanCommit (1, {})) = true
-      | predBindElem _ = false
 in
   predBindElem bindelem  
 end
             <layout>fun pred (bindelem) = 
 let
   fun predBindElem (Coordinator&apos;SendCanCommit (1, {})) = true
-      | predBindElem _ = false
 in
   predBindElem bindelem  
 end</layout>
@@ -4234,17 +4278,17 @@ end</layout>
         <declaration name="Observer">
           <ml id="ID1530017088">fun obs (bindelem) = 
 let
-  fun obsBindElem (Coordinator&apos;SendCanCommit (1, {})) = 1 
-      | obsBindElem _ = 0
+  fun obsBindElem (Coordinator&apos;SendCanCommit (1, {})) = [] 
+      | obsBindElem _ = []
 in
-  obsBindElem bindelem  
+  SimConfig.observe (obsBindElem bindelem) 
 end
             <layout>fun obs (bindelem) = 
 let
-  fun obsBindElem (Coordinator&apos;SendCanCommit (1, {})) = 1 
-      | obsBindElem _ = 0
+  fun obsBindElem (Coordinator&apos;SendCanCommit (1, {})) = [] 
+      | obsBindElem _ = []
 in
-  obsBindElem bindelem  
+  SimConfig.observe (obsBindElem bindelem) 
 end</layout>
           </ml>
         </declaration>
@@ -4254,8 +4298,8 @@ end</layout>
           </ml>
         </declaration>
         <declaration name="Stop">
-          <ml id="ID1530017096">fun stop () = ();
-            <layout>fun stop () = ();</layout>
+          <ml id="ID1530017096">fun stop () = SimConfig.stop();
+            <layout>fun stop () = SimConfig.stop();</layout>
           </ml>
         </declaration>
       </monitor>
@@ -4358,12 +4402,18 @@ end</layout>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
         </IndexNode>
+        <IndexNode expanded="false">
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
+        </IndexNode>
         <IndexNode expanded="true">
           <IndexNode expanded="true"/>
-          <IndexNode expanded="false"/>
           <IndexNode expanded="true"/>
-          <IndexNode expanded="false"/>
-          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
         </IndexNode>
       </IndexNode>

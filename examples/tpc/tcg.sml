@@ -1,4 +1,5 @@
-		    
+(* detection and observation function for the TPC example *)
+
 fun tcedetect (Bind.Workers'Receive_CanCommit (_,{w,vote}))  = true
   | tcedetect (Bind.Coordinator'Receive_Acknowledgements (_,{workers,decision})) = true
   | tcedetect (Bind.Workers'Receive_Decision (_,{w,decision}))  = true
@@ -10,22 +11,27 @@ fun tceobs (Bind.Workers'Receive_CanCommit (_,{w,vote}))  = [InEvent (w,vote)]
   | tceobs (Bind.Workers'Receive_Decision (_,{w,decision})) = [OutEvent (WDecision (w,decision))]
   | tceobs _ = raise obsExn; 
 
-(*
-fun oradetect (Bind.Workers'Receive_CanCommit (_,{w,vote}))  = true
-  | oradetect (Bind.Coordinator'Receive_Acknowledgements (_,{workers,decision}))  = true
-  | oradetect _ = false; 
-
-exception oraExn;
-fun oraobs (Bind.Workers'Receive_CanCommit (_,{w,vote}))  = WDecision (w,vote)
-  | oraobs 
-  | oraobs _ = raise oraExn; 
-*)
-(* TODO: the TCE and the TCO types could be type parameterised *)
-(* type TestCase = (TCE list) * (TCO list); *)
-
 Config.setTCdetect(tcedetect);
 Config.setTCobserve(tceobs);
-		  
-						
+
+(* exporting for teh TPC example *)
 
 
+fun prefixfn testname = "<Test TestName=\"TPCTest\">\n";
+
+fun postfixfn testname = "</Test>\n";
+
+fun testcasefn (i,teststr) =
+  "  <TestCase CaseID=\""^(Int.toString i)^"\">\n"^
+  teststr^
+  "  </TestCase>\n"
+
+fun tc_formatter testcase = "";
+
+fun tpcoutput testcases = Export.output ("tpctests.xml","TPCTest")
+					(prefixfn,postfixfn)
+					(testcasefn,tc_formatter) testcases;
+
+Config.setOutputDir (mbtcpnlibpath^"examples/tpc/output/");
+
+fun sstpc () = tpcoutput (SSTCG.gen ());
