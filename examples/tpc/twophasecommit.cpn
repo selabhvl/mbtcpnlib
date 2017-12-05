@@ -1712,7 +1712,7 @@ Acknowledgements</text>
                    currentcyckle="2"/>
         <transend idref="ID1429909289"/>
         <placeend idref="ID1429909286"/>
-        <annot id="ID1530012591">
+        <annot id="ID1530020172">
           <posattr x="-158.000000"
                    y="133.000000"/>
           <fillattr colour="White"
@@ -1744,7 +1744,7 @@ Acknowledgements</text>
                    currentcyckle="2"/>
         <transend idref="ID1429909289"/>
         <placeend idref="ID1429909280"/>
-        <annot id="ID1530012592">
+        <annot id="ID1530020173">
           <posattr x="-158.000000"
                    y="51.000000"/>
           <fillattr colour="White"
@@ -1936,7 +1936,7 @@ Acknowledgements</text>
                    currentcyckle="2"/>
         <transend idref="ID1429918629"/>
         <placeend idref="ID1429909280"/>
-        <annot id="ID1530012594">
+        <annot id="ID1530020174">
           <posattr x="-158.000000"
                    y="-38.000000"/>
           <fillattr colour="White"
@@ -2611,7 +2611,7 @@ OneVote</text>
                    currentcyckle="2"/>
         <transend idref="ID1429918645"/>
         <placeend idref="ID1429918662"/>
-        <annot id="ID1530012595">
+        <annot id="ID1530020175">
           <posattr x="-158.000000"
                    y="21.000000"/>
           <fillattr colour="White"
@@ -2707,7 +2707,7 @@ OneVote</text>
                    currentcyckle="2"/>
         <transend idref="ID1429940726"/>
         <placeend idref="ID1429918662"/>
-        <annot id="ID1530012596">
+        <annot id="ID1530020176">
           <posattr x="-51.000000"
                    y="120.000000"/>
           <fillattr colour="White"
@@ -3808,7 +3808,7 @@ else empty</text>
         <textattr colour="Black"
                   bold="false"/>
         <label/>
-        <text>val mbtcpnlibpath = &quot;c:/work/mbtcpnlib/&quot;;  </text>
+        <text>val mbtcpnlibpath = &quot;c:/work/mbtcpnlib/&quot;;</text>
       </Aux>
       <Aux id="ID1530016023">
         <posattr x="-420.000000"
@@ -3866,6 +3866,20 @@ else empty</text>
         <label/>
         <text>use (mbtcpnlibpath^&quot;examples/tpc/tcg.sml&quot;);</text>
       </Aux>
+      <Aux id="ID1530021033">
+        <posattr x="-420.000000"
+                 y="-146.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <label/>
+        <text>SMLofNJ.exportML (&quot;mbt-image.ML&quot;)</text>
+      </Aux>
     </page>
     <instances>
       <instance id="ID2149"
@@ -3902,11 +3916,6 @@ else empty</text>
           <text>&lt;same as model&gt;</text>
         </value>
       </option>
-      <option name="extensions.10002.enable">
-        <value>
-          <boolean>true</boolean>
-        </value>
-      </option>
       <option name="extensions.10003.enable">
         <value>
           <boolean>true</boolean>
@@ -3917,12 +3926,17 @@ else empty</text>
           <boolean>true</boolean>
         </value>
       </option>
-      <option name="extensions.10001.enable">
+      <option name="extensions.10002.enable">
         <value>
           <boolean>true</boolean>
         </value>
       </option>
       <option name="extensions.10005.enable">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="extensions.10001.enable">
         <value>
           <boolean>true</boolean>
         </value>
@@ -4131,8 +4145,8 @@ else empty</text>
                  height="667">
         <sheets>
           <cpnsheet id="ID1530011500"
-                    panx="46.000000"
-                    pany="-96.000000"
+                    panx="-53.000000"
+                    pany="-83.000000"
                     zoom="1.000000"
                     instance="ID1429909380">
             <zorder>
@@ -4168,9 +4182,19 @@ else empty</text>
               <position value="0"/>
             </zorder>
           </cpnsheet>
+          <cpnsheet id="ID1530020895"
+                    panx="-157.000000"
+                    pany="-85.000000"
+                    zoom="1.000000"
+                    instance="ID2149">
+            <zorder>
+              <position value="0"/>
+            </zorder>
+          </cpnsheet>
         </sheets>
         <zorder>
           <position value="2"/>
+          <position value="4"/>
           <position value="1"/>
           <position value="0"/>
           <position value="3"/>

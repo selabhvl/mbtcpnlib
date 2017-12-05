@@ -28,7 +28,7 @@ struct
   fun detectTC event = (!tcdetect event);
 
   (* observation function *)
-  val tcobserve = ref (fn (x:Bind.Elem) => []);
+  val tcobserve = ref (fn (x:Bind.Elem) => [] : tcevent list);
   fun setTCobserve observefn = (tcobserve := observefn);
   fun observeTC event = (!tcobserve event);
 
