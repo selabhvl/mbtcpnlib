@@ -1,9 +1,12 @@
+(* 
 use (mbtcpnlibpath^"config/testcases.sml");
 
 val mbtcpnlibpath = "c:/work/mbtcpnlib/";
 
-use (mbtcpnlibpath^"config/config.sml");
 use (mbtcpnlibpath^"config/simconfig.sml");
+*)
+
+use (mbtcpnlibpath^"config/config.sml");
 
 use (mbtcpnlibpath^"config/logging.sml");
 

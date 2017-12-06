@@ -1,8 +1,6 @@
 structure Config =
 struct
 
-  type testcase = Bind.Elem list;
-
   val modeldir = ref "";
   fun getModelDir () = (!modeldir);
   fun setModelDir outdir = (modeldir := outdir);

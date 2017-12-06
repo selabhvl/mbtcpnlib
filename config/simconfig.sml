@@ -1,9 +1,9 @@
 structure SimConfig = 
 struct
 
-val testcases = ref ([] : (tcevent list) list);
+val testcases = ref ([] : (TCEvent list) list);
 
-val testcase = ref ([] : (tcevent list));
+val testcase = ref ([] : (TCEvent list));
 
 fun clear () = (testcase := []);
 
@@ -11,9 +11,12 @@ fun getTestcases () = (!testcases);
 
 fun observe tcevents = (testcase := tcevents^^(!testcase);0); 
   
-fun init() = (); 
+fun init() = (testcases := [];
+	      testcase := []);
 
-fun stop() = (testcases := (!testcase)::(!testcases));
+(* TODO: do not insert a duplicate test case *) 
+fun stop() = (testcases := (!testcase)::(!testcases);
+	      testcase := []);
 
 
 end

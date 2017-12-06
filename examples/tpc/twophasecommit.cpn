@@ -238,7 +238,7 @@ end</layout>
         </color>
         <use id="ID1530021848">
           <ml>(mbtcpnlibpath^&quot;config/simconfig.sml&quot;)</ml>
-          <layout>use (mbtcpnlibpath^&quot;config/simconfig.sml&quot;);</layout>
+          <layout>use  (mbtcpnlibpath^&quot;config/simconfig.sml&quot;);</layout>
         </use>
       </block>
     </globbox>
@@ -1758,7 +1758,7 @@ Acknowledgements</text>
                    currentcyckle="2"/>
         <transend idref="ID1429909289"/>
         <placeend idref="ID1429909286"/>
-        <annot id="ID1530020172">
+        <annot id="ID1530029977">
           <posattr x="-158.000000"
                    y="133.000000"/>
           <fillattr colour="White"
@@ -1790,7 +1790,7 @@ Acknowledgements</text>
                    currentcyckle="2"/>
         <transend idref="ID1429909289"/>
         <placeend idref="ID1429909280"/>
-        <annot id="ID1530020173">
+        <annot id="ID1530029978">
           <posattr x="-158.000000"
                    y="51.000000"/>
           <fillattr colour="White"
@@ -1982,7 +1982,7 @@ Acknowledgements</text>
                    currentcyckle="2"/>
         <transend idref="ID1429918629"/>
         <placeend idref="ID1429909280"/>
-        <annot id="ID1530020174">
+        <annot id="ID1530029979">
           <posattr x="-158.000000"
                    y="-38.000000"/>
           <fillattr colour="White"
@@ -2657,7 +2657,7 @@ OneVote</text>
                    currentcyckle="2"/>
         <transend idref="ID1429918645"/>
         <placeend idref="ID1429918662"/>
-        <annot id="ID1530020175">
+        <annot id="ID1530029980">
           <posattr x="-158.000000"
                    y="21.000000"/>
           <fillattr colour="White"
@@ -2753,7 +2753,7 @@ OneVote</text>
                    currentcyckle="2"/>
         <transend idref="ID1429940726"/>
         <placeend idref="ID1429918662"/>
-        <annot id="ID1530020176">
+        <annot id="ID1530029981">
           <posattr x="-51.000000"
                    y="120.000000"/>
           <fillattr colour="White"
@@ -3807,44 +3807,24 @@ else empty</text>
       </vguideline>
       <group id="ID1429978726"
              name="ReceiveCanCommit">
-        <group_elm idref="ID1429913984"/>
-        <group_elm idref="ID1429913985"/>
-        <group_elm idref="ID1429913986"/>
-        <group_elm idref="ID1429913987"/>
-        <group_elm idref="ID1429913988"/>
-        <group_elm idref="ID1429913989"/>
-        <group_elm idref="ID1429914012"/>
-        <group_elm idref="ID1429914013"/>
-        <group_elm idref="ID1429914014"/>
-        <group_elm idref="ID1429914017"/>
-        <group_elm idref="ID1429914018"/>
-        <group_elm idref="ID1429951003"/>
         <group_elm idref="ID1429913990"/>
         <group_elm idref="ID1429913993"/>
         <group_elm idref="ID1429913995"/>
         <group_elm idref="ID1429913991"/>
         <group_elm idref="ID1429913992"/>
-        <group_elm idref="ID1429914002"/>
-        <group_elm idref="ID1429914003"/>
-        <group_elm idref="ID1429914004"/>
-        <group_elm idref="ID1429914005"/>
-        <group_elm idref="ID1429914010"/>
-        <group_elm idref="ID1429913964"/>
-        <group_elm idref="ID1429913965"/>
-        <group_elm idref="ID1429913966"/>
-        <group_elm idref="ID1429914011"/>
-        <group_elm idref="ID1429914015"/>
-        <group_elm idref="ID1429914016"/>
-        <group_elm idref="ID1429914020"/>
-        <group_elm idref="ID1429914021"/>
+        <group_elm idref="ID1429913996"/>
+        <group_elm idref="ID1429913999"/>
+        <group_elm idref="ID1429914001"/>
+        <group_elm idref="ID1429913997"/>
+        <group_elm idref="ID1429913998"/>
       </group>
     </page>
     <page id="ID1530015015">
       <pageattr name="MBTCPN"/>
       <constraints/>
       <Aux id="ID1530015334">
-        <posattr x="-378.000000"
-                 y="241.000000"/>
+        <posattr x="-420.000000"
+                 y="144.000000"/>
         <fillattr colour="White"
                   pattern=""
                   filled="false"/>
@@ -3884,23 +3864,9 @@ else empty</text>
         <label/>
         <text>run();</text>
       </Aux>
-      <Aux id="ID1530018776">
-        <posattr x="-194.000000"
-                 y="-210.000000"/>
-        <fillattr colour="White"
-                  pattern=""
-                  filled="false"/>
-        <lineattr colour="Black"
-                  thick="1"
-                  type="Solid"/>
-        <textattr colour="Black"
-                  bold="false"/>
-        <label/>
-        <text>open Bind;</text>
-      </Aux>
       <Aux id="ID1530020093">
-        <posattr x="-282.000000"
-                 y="-237.000000"/>
+        <posattr x="-32.000000"
+                 y="-235.000000"/>
         <fillattr colour="White"
                   pattern=""
                   filled="false"/>
@@ -3910,7 +3876,7 @@ else empty</text>
         <textattr colour="Black"
                   bold="false"/>
         <label/>
-        <text>use (mbtcpnlibpath^&quot;examples/tpc/tcg.sml&quot;);</text>
+        <text>use (mbtcpnlibpath^&quot;config/simconfig.sml&quot;);</text>
       </Aux>
       <Aux id="ID1530021033">
         <posattr x="-420.000000"
@@ -3925,6 +3891,48 @@ else empty</text>
                   bold="false"/>
         <label/>
         <text>SMLofNJ.exportML (&quot;mbt-image.ML&quot;)</text>
+      </Aux>
+      <Aux id="ID1530023519">
+        <posattr x="-226.000000"
+                 y="97.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <label/>
+        <text>open BindElem</text>
+      </Aux>
+      <Aux id="ID1530027389">
+        <posattr x="-434.000000"
+                 y="-222.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <label/>
+        <text>use (mbtcpnlibpath^&quot;compute/simtcg.sml&quot;);</text>
+      </Aux>
+      <Aux id="ID1530027990">
+        <posattr x="-420.000000"
+                 y="-252.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <label/>
+        <text>val tcs = SIMTCG.generate ();</text>
       </Aux>
     </page>
     <instances>
@@ -3962,6 +3970,11 @@ else empty</text>
           <text>&lt;same as model&gt;</text>
         </value>
       </option>
+      <option name="extensions.10002.enable">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
       <option name="extensions.10003.enable">
         <value>
           <boolean>true</boolean>
@@ -3972,17 +3985,12 @@ else empty</text>
           <boolean>true</boolean>
         </value>
       </option>
-      <option name="extensions.10002.enable">
+      <option name="extensions.10001.enable">
         <value>
           <boolean>true</boolean>
         </value>
       </option>
       <option name="extensions.10005.enable">
-        <value>
-          <boolean>true</boolean>
-        </value>
-      </option>
-      <option name="extensions.10001.enable">
         <value>
           <boolean>true</boolean>
         </value>
@@ -4206,8 +4214,8 @@ else empty</text>
                     zoom="1.000000"
                     instance="ID1429914065">
             <zorder>
-              <position value="1"/>
               <position value="0"/>
+              <position value="1"/>
             </zorder>
           </cpnsheet>
           <cpnsheet id="ID1530012516"
@@ -4241,65 +4249,143 @@ else empty</text>
         <zorder>
           <position value="4"/>
           <position value="2"/>
-          <position value="3"/>
           <position value="1"/>
           <position value="0"/>
+          <position value="3"/>
         </zorder>
       </cpnbinder>
     </binders>
     <monitorblock name="Monitors">
-      <monitor id="ID1530016846"
-               name="TestCaseGeneration"
-               type="2"
-               typedescription="User defined"
+      <monitor id="ID1530024431"
+               name="WorkerTC"
+               type="3"
+               typedescription="Data collection"
                disabled="false">
-        <node idref="ID1429909289"
-              pageinstanceidref="ID1429909380"/>
-        <declaration name="Init">
-          <ml id="ID1530017080">fun init () = SimConfig.init();
-            <layout>fun init () = SimConfig.init();</layout>
-          </ml>
-        </declaration>
+        <node idref="ID1429913990"
+              pageinstanceidref="ID1429914065"/>
+        <node idref="ID1429913996"
+              pageinstanceidref="ID1429914065"/>
         <declaration name="Predicate">
-          <ml id="ID1530017084">fun pred (bindelem) = 
+          <ml id="ID1530024709">fun pred (bindelem) = 
 let
-  fun predBindElem (Coordinator&apos;SendCanCommit (1, {})) = true
+  fun predBindElem (Workers&apos;Receive_CanCommit (1, 
+                               {vote,w})) = true
+      | predBindElem (Workers&apos;Receive_Decision (1, 
+                               {decision,w})) = true
+      | predBindElem _ = false
 in
   predBindElem bindelem  
 end
             <layout>fun pred (bindelem) = 
 let
-  fun predBindElem (Coordinator&apos;SendCanCommit (1, {})) = true
+  fun predBindElem (Workers&apos;Receive_CanCommit (1, 
+                               {vote,w})) = true
+      | predBindElem (Workers&apos;Receive_Decision (1, 
+                               {decision,w})) = true
+      | predBindElem _ = false
 in
   predBindElem bindelem  
 end</layout>
           </ml>
         </declaration>
         <declaration name="Observer">
-          <ml id="ID1530017088">fun obs (bindelem) = 
+          <ml id="ID1530024713">fun obs (bindelem) = 
 let
-  fun obsBindElem (Coordinator&apos;SendCanCommit (1, {})) = [] 
+  fun obsBindElem (Workers&apos;Receive_CanCommit (1, {vote,w})) = [InEvent (w,vote)]
+      | obsBindElem (Workers&apos;Receive_Decision (1, 
+                               {decision,w})) = [OutEvent (WDecision (w,decision))]
       | obsBindElem _ = []
 in
-  SimConfig.observe (obsBindElem bindelem) 
+  SimConfig.observe(obsBindElem bindelem)  
 end
             <layout>fun obs (bindelem) = 
 let
-  fun obsBindElem (Coordinator&apos;SendCanCommit (1, {})) = [] 
+  fun obsBindElem (Workers&apos;Receive_CanCommit (1, {vote,w})) = [InEvent (w,vote)]
+      | obsBindElem (Workers&apos;Receive_Decision (1, 
+                               {decision,w})) = [OutEvent (WDecision (w,decision))]
       | obsBindElem _ = []
 in
-  SimConfig.observe (obsBindElem bindelem) 
+  SimConfig.observe(obsBindElem bindelem)  
+end</layout>
+          </ml>
+        </declaration>
+        <declaration name="Init function">
+          <ml id="ID1530024717">fun init () = 
+  NONE
+            <layout>fun init () = 
+  NONE</layout>
+          </ml>
+        </declaration>
+        <declaration name="Stop">
+          <ml id="ID1530024721">fun stop () = 
+  NONE
+            <layout>fun stop () = 
+  NONE</layout>
+          </ml>
+        </declaration>
+        <option name="Timed"
+                value="false"/>
+        <option name="Logging"
+                value="true"/>
+      </monitor>
+      <monitor id="ID1530025330"
+               name="CoordinatorTC"
+               type="2"
+               typedescription="User defined"
+               disabled="false">
+        <node idref="ID1429909301"
+              pageinstanceidref="ID1429909380"/>
+        <declaration name="Init">
+          <ml id="ID1530025591">fun init () = ()
+            <layout>fun init () = ()</layout>
+          </ml>
+        </declaration>
+        <declaration name="Predicate">
+          <ml id="ID1530025595">fun pred (bindelem) = 
+let
+  fun predBindElem (Coordinator&apos;Receive_Acknowledgements (1, 
+                               {decision,workers})) = true
+      | predBindElem _ = false
+in
+  predBindElem bindelem  
+end
+            <layout>fun pred (bindelem) = 
+let
+  fun predBindElem (Coordinator&apos;Receive_Acknowledgements (1, 
+                               {decision,workers})) = true
+      | predBindElem _ = false
+in
+  predBindElem bindelem  
+end</layout>
+          </ml>
+        </declaration>
+        <declaration name="Observer">
+          <ml id="ID1530025599">fun obs (bindelem) = 
+let
+  fun obsBindElem (Coordinator&apos;Receive_Acknowledgements (1, 
+                               {decision,workers})) = [OutEvent (SDecision decision)]
+      | obsBindElem _ = []
+in
+  SimConfig.observe(obsBindElem bindelem)  
+end
+            <layout>fun obs (bindelem) = 
+let
+  fun obsBindElem (Coordinator&apos;Receive_Acknowledgements (1, 
+                               {decision,workers})) = [OutEvent (SDecision decision)]
+      | obsBindElem _ = []
+in
+  SimConfig.observe(obsBindElem bindelem)  
 end</layout>
           </ml>
         </declaration>
         <declaration name="Action">
-          <ml id="ID1530017092">fun action (observedval) = ();
-            <layout>fun action (observedval) = ();</layout>
+          <ml id="ID1530025603">fun action (observedval) = ()
+            <layout>fun action (observedval) = ()</layout>
           </ml>
         </declaration>
         <declaration name="Stop">
-          <ml id="ID1530017096">fun stop () = SimConfig.stop();
-            <layout>fun stop () = SimConfig.stop();</layout>
+          <ml id="ID1530025607">fun stop () = (SimConfig.stop())
+            <layout>fun stop () = (SimConfig.stop())</layout>
           </ml>
         </declaration>
       </monitor>
@@ -4369,9 +4455,7 @@ end</layout>
           <IndexNode expanded="false"/>
         </IndexNode>
       </IndexNode>
-      <IndexNode expanded="false">
-        <IndexNode expanded="false"/>
-      </IndexNode>
+      <IndexNode expanded="false"/>
       <IndexNode expanded="true">
         <IndexNode expanded="false">
           <IndexNode expanded="true"/>
@@ -4419,6 +4503,30 @@ end</layout>
       </IndexNode>
       <IndexNode expanded="true">
         <IndexNode expanded="true">
+          <IndexNode expanded="false">
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+          </IndexNode>
+          <IndexNode expanded="false">
+            <IndexNode expanded="false">
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+            </IndexNode>
+          </IndexNode>
+          <IndexNode expanded="true">
+            <IndexNode expanded="true"/>
+          </IndexNode>
+          <IndexNode expanded="true">
+            <IndexNode expanded="true"/>
+          </IndexNode>
+          <IndexNode expanded="false">
+            <IndexNode expanded="true"/>
+          </IndexNode>
+          <IndexNode expanded="false">
+            <IndexNode expanded="true"/>
+          </IndexNode>
+        </IndexNode>
+        <IndexNode expanded="true">
           <IndexNode expanded="false"/>
           <IndexNode expanded="false">
             <IndexNode expanded="true">
@@ -4428,7 +4536,7 @@ end</layout>
           <IndexNode expanded="true">
             <IndexNode expanded="true"/>
           </IndexNode>
-          <IndexNode expanded="true">
+          <IndexNode expanded="false">
             <IndexNode expanded="true"/>
           </IndexNode>
           <IndexNode expanded="true">
