@@ -11,17 +11,20 @@ fun log msg =
    |  SOME (stream) =>
       let
 	  val time = Date.toString(Date.fromTimeLocal(Time.now()));
+	  val _ = TextIO.output(stream,time^" "^msg^"\n")
       in
-	  TextIO.output(stream,time^" "^msg^"\n")
+	  TextIO.flushOut(stream)
       end;
 
 fun start () =
   let
       val filename = Config.getModelDir()^logfilename
   in
-      (file := SOME (TextIO.openOut(filename));
-       log "Logging started")
-  end; (* TODO: do not reopen if logging is already running *)
+      (case (!file) of
+	   NONE => (file := SOME (TextIO.openAppend(filename));
+		    log "Logging started")
+	| SOME _ => ()) 
+  end; 
 
 fun stop() =
   case (!file) of

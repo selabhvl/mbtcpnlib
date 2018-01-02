@@ -15,8 +15,6 @@ Config.setTCdetect(tcedetect);
 Config.setTCobserve(tceobs);
 
 (* exporting for teh TPC example *)
-
-
 fun prefixfn testname = "<Test TestName=\"TPCTest\">\n";
 
 fun postfixfn testname = "</Test>\n";
@@ -32,6 +30,8 @@ fun tpcoutput testcases = Export.output ("tpctests.xml","TPCTest")
 					(prefixfn,postfixfn)
 					(testcasefn,tc_formatter) testcases;
 
-Config.setOutputDir (mbtcpnlibpath^"examples/tpc/output/");
+(* logging and output *)
+Config.setModelDir (mbtcpnlibpath^"examples/tpc/");
+Config.setOutputDir ((Config.getModelDir())^"output/");
 
-fun sstpc () = tpcoutput (SSTCG.gen ());
+fun sstpc () = tpcoutput (Execute.ssgenTC ());

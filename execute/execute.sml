@@ -9,15 +9,19 @@ fun simgenTC n = CPN'Replications.nreplications n;
 
 fun ssgenTC () =
   let
-      val _ = DeleteStateSpace();
+      (* val _ = DeleteStateSpace(); *)
+      val _ = Logging.start ();
+      
       val _ = Logging.log ("Starting state space test-case generation");
 
-      val _ = CalculateOccGraph();
+      (* val _ = CalculateOccGraph(); *)
 
       val tcs = SSTCG.gen();
       
       val _ = Logging.log ("Configuration: "^(Config.getConfigName ()));
       val _ = Logging.log ("Completed");
+      
+      val _ = Logging.start ();
   in
       tcs
   end;
