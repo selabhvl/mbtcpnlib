@@ -1,24 +1,22 @@
 structure Export =
 struct
 
-fun output (filename,testname) (prefixfn,postfixfn) (testcasefn,tc_formatter) testcases  =
+fun output (filename,testname) testfn (testcasefn,tc_formatter) testcases  =
   let
       val file = TextIO.openOut((Config.getOutputDir ())^filename);
 
-      val _ = TextIO.output(file,prefixfn testname);
-
-      val _ =
-	  List.foldr (fn (test,i) =>
+      val (_,testcasestr) =
+	  List.foldr (fn (test,(i,str)) =>
 			 let
-			     val teststr = testcasefn (i,tc_formatter test)
-			     val _ = TextIO.output(file,teststr)
+			     val testcasestr = testcasefn (i,tc_formatter test)
 			 in
-			     (i+1)
+			     (i+1,str^testcasestr)
 			 end)
-		     1
+		     (1,"")
 		     testcases;
       
-      val _ = TextIO.output(file,postfixfn testname);
+      val teststr = testfn testcasestr		      
+      val _ = TextIO.output(file,teststr)
       
       val _ = TextIO.closeOut(file)
   in

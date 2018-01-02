@@ -48,6 +48,9 @@ fun ssgenTC () =
       val tcs = SSTCG.gen();
       
       val _ = Logging.log ("Configuration: "^(Config.getConfigName ()));
+
+      val _ = Logging.log ("Test cases   : "^(Int.toString (List.length tcs)));
+
       val _ = Logging.log ("Completed");
       
       val _ = Logging.stop ();

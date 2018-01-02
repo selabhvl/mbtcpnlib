@@ -197,8 +197,8 @@ end</layout>
       </block>
       <block id="ID1530021386">
         <id>MBT</id>
-        <ml id="ID1530021696">val mbtcpnlibpath = &quot;c:/work/mbtcpnlib/&quot;;
-          <layout>val mbtcpnlibpath = &quot;c:/work/mbtcpnlib/&quot;;</layout>
+        <ml id="ID1530021696">val mbtcpnlibpath =  &quot;c:/work/git/mbtcpnlib/&quot;;
+          <layout>val mbtcpnlibpath =  &quot;c:/work/git/mbtcpnlib/&quot;;</layout>
         </ml>
         <color id="ID1530022575">
           <id>TCOutEvent</id>
@@ -238,7 +238,7 @@ end</layout>
         </color>
         <use id="ID1530021848">
           <ml>(mbtcpnlibpath^&quot;config/simconfig.sml&quot;)</ml>
-          <layout>use  (mbtcpnlibpath^&quot;config/simconfig.sml&quot;);</layout>
+          <layout>use (mbtcpnlibpath^&quot;config/simconfig.sml&quot;);</layout>
         </use>
       </block>
     </globbox>
@@ -1758,7 +1758,7 @@ Acknowledgements</text>
                    currentcyckle="2"/>
         <transend idref="ID1429909289"/>
         <placeend idref="ID1429909286"/>
-        <annot id="ID1530029977">
+        <annot id="ID1589360281">
           <posattr x="-158.000000"
                    y="133.000000"/>
           <fillattr colour="White"
@@ -1790,7 +1790,7 @@ Acknowledgements</text>
                    currentcyckle="2"/>
         <transend idref="ID1429909289"/>
         <placeend idref="ID1429909280"/>
-        <annot id="ID1530029978">
+        <annot id="ID1589360282">
           <posattr x="-158.000000"
                    y="51.000000"/>
           <fillattr colour="White"
@@ -1982,7 +1982,7 @@ Acknowledgements</text>
                    currentcyckle="2"/>
         <transend idref="ID1429918629"/>
         <placeend idref="ID1429909280"/>
-        <annot id="ID1530029979">
+        <annot id="ID1589360283">
           <posattr x="-158.000000"
                    y="-38.000000"/>
           <fillattr colour="White"
@@ -2657,7 +2657,7 @@ OneVote</text>
                    currentcyckle="2"/>
         <transend idref="ID1429918645"/>
         <placeend idref="ID1429918662"/>
-        <annot id="ID1530029980">
+        <annot id="ID1589360284">
           <posattr x="-158.000000"
                    y="21.000000"/>
           <fillattr colour="White"
@@ -2753,7 +2753,7 @@ OneVote</text>
                    currentcyckle="2"/>
         <transend idref="ID1429940726"/>
         <placeend idref="ID1429918662"/>
-        <annot id="ID1530029981">
+        <annot id="ID1589360285">
           <posattr x="-51.000000"
                    y="120.000000"/>
           <fillattr colour="White"
@@ -3823,8 +3823,8 @@ else empty</text>
       <pageattr name="MBTCPN"/>
       <constraints/>
       <Aux id="ID1530015334">
-        <posattr x="-420.000000"
-                 y="144.000000"/>
+        <posattr x="-432.000000"
+                 y="168.000000"/>
         <fillattr colour="White"
                   pattern=""
                   filled="false"/>
@@ -3970,17 +3970,17 @@ else empty</text>
           <text>&lt;same as model&gt;</text>
         </value>
       </option>
-      <option name="extensions.10002.enable">
-        <value>
-          <boolean>true</boolean>
-        </value>
-      </option>
-      <option name="extensions.10003.enable">
-        <value>
-          <boolean>true</boolean>
-        </value>
-      </option>
       <option name="extensions.10006.enable">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="extensions.10005.enable">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="extensions.10002.enable">
         <value>
           <boolean>true</boolean>
         </value>
@@ -3990,7 +3990,7 @@ else empty</text>
           <boolean>true</boolean>
         </value>
       </option>
-      <option name="extensions.10005.enable">
+      <option name="extensions.10003.enable">
         <value>
           <boolean>true</boolean>
         </value>
@@ -4196,7 +4196,7 @@ else empty</text>
                  x="766"
                  y="42"
                  width="977"
-                 height="667">
+                 height="616">
         <sheets>
           <cpnsheet id="ID1530011500"
                     panx="-53.000000"
@@ -4494,7 +4494,7 @@ end</layout>
           <IndexNode expanded="false"/>
           <IndexNode expanded="true"/>
         </IndexNode>
-        <IndexNode expanded="true">
+        <IndexNode expanded="false">
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>

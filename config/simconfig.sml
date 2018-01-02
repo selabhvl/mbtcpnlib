@@ -15,7 +15,7 @@ fun clear () = (testcase := []);
 
 fun getTestcases () = (!testcases);
 
-fun observe tcevents = (testcase := merge (tcevents (!testcase));0); 
+fun observe tcevents = (testcase := (merge tcevents (!testcase));0); 
   
 fun init() = (testcases := [];
 	      testcase := []);
