@@ -35,3 +35,5 @@ Config.setModelDir (mbtcpnlibpath^"examples/tpc/");
 Config.setOutputDir ((Config.getModelDir())^"output/");
 
 fun sstpc () = tpcoutput (Execute.ssgenTC ());
+
+fun simtpc () = tpcoutput (Execute.simgenTC());

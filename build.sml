@@ -20,7 +20,7 @@ use (mbtcpnlibpath^"execute/run.sml");
 
 use (mbtcpnlibpath^"examples/tpc/tcg.sml");
 
-
 fun b() = (use (mbtcpnlibpath^"build.sml"));
 
+val _ = SimConfig.init();
 	 

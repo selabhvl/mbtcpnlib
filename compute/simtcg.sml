@@ -1,15 +1,17 @@
 structure SIMTCG =
 struct
 
-fun gen n =
+fun gen () =
   let
-      val _ = SimConfig.init();
-      val _ = CPN'Replications.nreplications n;
-      val testcases = SimConfig.getTestcases ();
-  in
-      testcases
-  end;
+      ( * val _ = SimConfig.init(); *)
+      
+      val _ = CPN'Sim.init_all();
+      val _ = CPN'Sim.run();
+      
+      val tcs = SimConfig.getTestcases();
 
-fun generate () = gen 2;
+  in
+      tcs
+  end;
 
 end;
