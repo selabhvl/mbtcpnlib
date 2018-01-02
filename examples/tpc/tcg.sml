@@ -62,4 +62,4 @@ Config.setOutputDir ((Config.getModelDir())^"output/");
 
 fun sstpc () = tpcoutput (Execute.ssgenTC ());
 
-fun simtpc () = tpcoutput (Execute.simgenTC 2);
+fun simtpc () = tpcoutput (Execute.simgenTC 10);

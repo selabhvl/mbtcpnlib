@@ -15,5 +15,5 @@ use (mbtcpnlibpath^"examples/tpc/tcg.sml");
 
 fun b() = (use (mbtcpnlibpath^"build.sml"));
 
-(* val _ = SimConfig.init();*)
+fun s() = (use (mbtcpnlibpath^"boot.sml"));
 	 

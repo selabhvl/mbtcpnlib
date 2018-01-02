@@ -20,9 +20,20 @@ fun observe tcevents = (testcase := (merge tcevents (!testcase));0);
 fun init() = (testcases := [];
 	      testcase := []);
 
-(* TODO: do not insert a duplicate test case *) 
-fun stop() = (testcases := (!testcase)::(!testcases);
-	      testcase := []);
+fun tc_contain tc1 tc2 =
+  List.all (fn ev => List.exists (fn ev' => ev = ev') tc2) tc1;
 
+fun tc_equal tc1 tc2 = (tc_contain tc1 tc2) andalso (tc_contain tc2 tc1);
+
+fun tc_exists tc tcs = List.exists (fn tc' => tc_equal tc tc') tcs;
+
+fun stop() =
+  let
+      val _ = if tc_exists (!testcase) (!testcases)
+	      then ()
+	      else (testcases := (!testcase)::(!testcases));
+  in
+      testcase := []
+  end;
 
 end
