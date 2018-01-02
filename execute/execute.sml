@@ -2,24 +2,35 @@ structure Execute =
 struct
 
 (* simulation-based test case generation *)
-
+    
 fun simgenTC n =
   let
+      fun simrun 0 = ()
+	| simrun m  =
+
+	  let
+	      val tcs = SIMTCG.gen()
+
+	      val _ = Logging.log ("Run          : "^(Int.toString m)^":"^(Int.toString n));
+	      val _ = Logging.log ("Configuration: "^(Config.getConfigName ()));
+	      val _ = Logging.log ("Test cases   : "^(Int.toString (List.length tcs)));
+	  in
+	      simrun (m-1)
+	  end
+
+
       val _ = Logging.start ();
       val _ = Logging.log ("Simulation-based test-case generation");
- 
-      val _ = CPN'Sim.init_all();
-      val _ = CPN'Sim.run();
+
+      val _ = SimConfig.init();
+
+      val _ = simrun n;
       
-      val tcs = SimConfig.getTestcases();
-      
-      val _ = Logging.log ("Configuration: "^(Config.getConfigName ()));
-      val _ = Logging.log ("Test cases:    "^(Int.toString (List.length tcs)));
       val _ = Logging.log ("Completed");
       
       val _ = Logging.stop ();
   in
-     tcs
+      SimConfig.getTestcases()
   end;
 
 (* state-space based test case generation *)
