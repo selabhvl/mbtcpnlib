@@ -1,18 +1,24 @@
 (* detection and observation function for the TPC example *)
 
-fun tcedetect (Bind.Workers'Receive_CanCommit (_,{w,vote}))  = true
-  | tcedetect (Bind.Coordinator'Receive_Acknowledgements (_,{workers,decision})) = true
-  | tcedetect (Bind.Workers'Receive_Decision (_,{w,decision}))  = true
-  | tcedetect _ = false;
+structure TPCTCSpec : TCSPEC = struct
+	  
+fun detection (Bind.Workers'Receive_CanCommit _)  = true
+  | detection (Bind.Coordinator'Receive_Acknowledgements _) = true
+  | detection (Bind.Workers'Receive_Decision _)  = true
+  | detection _ = false;
 
 exception obsExn;
-fun tceobs (Bind.Workers'Receive_CanCommit (_,{w,vote}))  = [InEvent (w,vote)]
-  | tceobs (Bind.Coordinator'Receive_Acknowledgements (_,{workers,decision}))  = [OutEvent (SDecision decision)]
-  | tceobs (Bind.Workers'Receive_Decision (_,{w,decision})) = [OutEvent (WDecision (w,decision))]
-  | tceobs _ = raise obsExn; 
+fun observation (Bind.Workers'Receive_CanCommit (_,{w,vote}))  = [InEvent (w,vote)]
+  | observation (Bind.Coordinator'Receive_Acknowledgements (_,{workers,decision}))  = [OutEvent (SDecision decision)]
+  | observation (Bind.Workers'Receive_Decision (_,{w,decision})) = [OutEvent (WDecision (w,decision))]
+  | observation _ = raise obsExn; 
 
-Config.setTCdetect(tcedetect);
-Config.setTCobserve(tceobs);
+fun format _ = ""; (* TODO *)
+
+end;
+
+Config.setTCdetect(TPCTCSpec.detection);
+Config.setTCobserve(TPCTCSpec.observation);
 
 (* exporting for teh TPC example *)
 fun testfn testname teststr =

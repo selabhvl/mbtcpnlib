@@ -197,9 +197,16 @@ end</layout>
       </block>
       <block id="ID1530021386">
         <id>MBT</id>
-        <ml id="ID1530021696">val mbtcpnlibpath =  &quot;c:/work/git/mbtcpnlib/&quot;;
-          <layout>val mbtcpnlibpath =  &quot;c:/work/git/mbtcpnlib/&quot;;</layout>
+        <ml id="ID1530021696">val mbtcpnlibpath =  &quot;c:/work/mbtcpnlib/&quot;;
+          <layout>val mbtcpnlibpath =  &quot;c:/work/mbtcpnlib/&quot;;</layout>
         </ml>
+        <color id="ID1589361264">
+          <id>TCInEvent</id>
+          <alias>
+            <id>WorkerxVote</id>
+          </alias>
+          <layout>colset TCInEvent = WorkerxVote;</layout>
+        </color>
         <color id="ID1530022575">
           <id>TCOutEvent</id>
           <union>
@@ -224,7 +231,7 @@ end</layout>
             <unionfield>
               <id>InEvent</id>
               <type>
-                <id>WorkerxVote</id>
+                <id>TCInEvent</id>
               </type>
             </unionfield>
             <unionfield>
@@ -234,7 +241,7 @@ end</layout>
               </type>
             </unionfield>
           </union>
-          <layout>colset TCEvent = union InEvent : WorkerxVote + OutEvent : TCOutEvent;</layout>
+          <layout>colset TCEvent = union InEvent : TCInEvent + OutEvent : TCOutEvent;</layout>
         </color>
         <use id="ID1530021848">
           <ml>(mbtcpnlibpath^&quot;config/simconfig.sml&quot;)</ml>
@@ -1758,7 +1765,7 @@ Acknowledgements</text>
                    currentcyckle="2"/>
         <transend idref="ID1429909289"/>
         <placeend idref="ID1429909286"/>
-        <annot id="ID1589360281">
+        <annot id="ID1589360371">
           <posattr x="-158.000000"
                    y="133.000000"/>
           <fillattr colour="White"
@@ -1790,7 +1797,7 @@ Acknowledgements</text>
                    currentcyckle="2"/>
         <transend idref="ID1429909289"/>
         <placeend idref="ID1429909280"/>
-        <annot id="ID1589360282">
+        <annot id="ID1589360372">
           <posattr x="-158.000000"
                    y="51.000000"/>
           <fillattr colour="White"
@@ -1982,7 +1989,7 @@ Acknowledgements</text>
                    currentcyckle="2"/>
         <transend idref="ID1429918629"/>
         <placeend idref="ID1429909280"/>
-        <annot id="ID1589360283">
+        <annot id="ID1589360373">
           <posattr x="-158.000000"
                    y="-38.000000"/>
           <fillattr colour="White"
@@ -2657,7 +2664,7 @@ OneVote</text>
                    currentcyckle="2"/>
         <transend idref="ID1429918645"/>
         <placeend idref="ID1429918662"/>
-        <annot id="ID1589360284">
+        <annot id="ID1589360374">
           <posattr x="-158.000000"
                    y="21.000000"/>
           <fillattr colour="White"
@@ -2753,7 +2760,7 @@ OneVote</text>
                    currentcyckle="2"/>
         <transend idref="ID1429940726"/>
         <placeend idref="ID1429918662"/>
-        <annot id="ID1589360285">
+        <annot id="ID1589360375">
           <posattr x="-51.000000"
                    y="120.000000"/>
           <fillattr colour="White"
@@ -3970,12 +3977,7 @@ else empty</text>
           <text>&lt;same as model&gt;</text>
         </value>
       </option>
-      <option name="extensions.10006.enable">
-        <value>
-          <boolean>true</boolean>
-        </value>
-      </option>
-      <option name="extensions.10005.enable">
+      <option name="extensions.10003.enable">
         <value>
           <boolean>true</boolean>
         </value>
@@ -3985,12 +3987,17 @@ else empty</text>
           <boolean>true</boolean>
         </value>
       </option>
+      <option name="extensions.10006.enable">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
       <option name="extensions.10001.enable">
         <value>
           <boolean>true</boolean>
         </value>
       </option>
-      <option name="extensions.10003.enable">
+      <option name="extensions.10005.enable">
         <value>
           <boolean>true</boolean>
         </value>
@@ -4469,13 +4476,13 @@ end</layout>
           <IndexNode expanded="false"/>
         </IndexNode>
         <IndexNode expanded="true"/>
-        <IndexNode expanded="false">
+        <IndexNode expanded="true">
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
         </IndexNode>
-        <IndexNode expanded="false">
+        <IndexNode expanded="true">
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
@@ -4486,7 +4493,7 @@ end</layout>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
         </IndexNode>
-        <IndexNode expanded="false">
+        <IndexNode expanded="true">
           <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
           <IndexNode expanded="true"/>
@@ -4494,14 +4501,15 @@ end</layout>
           <IndexNode expanded="false"/>
           <IndexNode expanded="true"/>
         </IndexNode>
-        <IndexNode expanded="false">
+        <IndexNode expanded="true">
+          <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
         </IndexNode>
       </IndexNode>
-      <IndexNode expanded="true">
+      <IndexNode expanded="false">
         <IndexNode expanded="true">
           <IndexNode expanded="false">
             <IndexNode expanded="false"/>
