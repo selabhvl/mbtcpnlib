@@ -1,9 +1,9 @@
-structure Execute =
+structure Execute : TCGEN =
 struct
 
 (* simulation-based test case generation *)
     
-fun simgenTC n =
+fun sim n =
   let
       fun simrun 0 = ()
 	| simrun m  =
@@ -35,7 +35,7 @@ fun simgenTC n =
 
 (* state-space based test case generation *)
 
-fun ssgenTC () =
+fun ss () =
   let
       val _ = CPN'Sim.init_all();
       (* val _ = DeleteStateSpace(); *)
@@ -57,4 +57,7 @@ fun ssgenTC () =
   in
       tcs
   end;
+
+fun export (tcs : (TCEvent list) list) = Export.export tcs;
+
 end;

@@ -16,9 +16,9 @@ struct
   fun getConfigName () = (!confignaming ());
 
   (* for naming individual test cases *)
-  val tcnaming = ref (fn () => "");
+  val tcnaming = ref (fn i => Int.toString i);
   fun setTCNaming namingfn = (tcnaming := namingfn);
-  fun getTCName () = (!tcnaming ());
+  fun getTCName i = (!tcnaming i);
 
   (* event detection function *)
   val tcdetect = ref (fn (x:Bind.Elem) => false);
@@ -29,6 +29,11 @@ struct
   val tcobserve = ref (fn (x:Bind.Elem) => [] : TCEvent list);
   fun setTCobserve observefn = (tcobserve := observefn);
   fun observeTC event = (!tcobserve event);
+
+  (* formatting  function *)
+  val tcformat = ref (fn (x:TCEvent) => "");
+  fun setTCformat formatfn = (tcformat := formatfn);
+  fun formatTC event = (!tcformat event);
 
   (* TODO: oracle detection and observation *)
   (* may need to go into a seperate monitor *)

@@ -1,4 +1,4 @@
-(* detection and observation function for the TPC example *)
+(* implementation of the test case specification for the TPC example *)
 
 structure TPCTCSpec : TCSPEC = struct
 	  
@@ -13,59 +13,33 @@ fun observation (Bind.Workers'Receive_CanCommit (_,{w,vote}))  = [InEvent (w,vot
   | observation (Bind.Workers'Receive_Decision (_,{w,decision})) = [OutEvent (WDecision (w,decision))]
   | observation _ = raise obsExn; 
 
-fun format _ = ""; (* TODO *)
-
-end;
-
-Config.setTCdetect(TPCTCSpec.detection);
-Config.setTCobserve(TPCTCSpec.observation);
-
-(* exporting for teh TPC example *)
-fun testfn testname teststr =
-  "<Test TestName=\""^testname^"\">\n"^
-  teststr^
-  "</Test>\n";
-
-fun testcasefn (i,teststr) =
-  "  <TestCase CaseID=\""^(Int.toString i)^"\" NumOfWorker=\""^(Int.toString W)^"\">\n"^
-  teststr^
-  "  </TestCase>\n"
-
-fun formatevent (InEvent (wrk(i),vote)) =
+fun format (InEvent (wrk(i),vote)) =
   "      <Votes>\n"^
   "        <WorkerID>"^(Int.toString i)^"</WorkerID>\n"^
   "        <VoteValue>"^(if vote = No then "0" else "1")^"</VoteValue>\n"^
   "      </Votes>\n"
-  | formatevent (OutEvent (WDecision (wrk(i),decision))) =
+  | format (OutEvent (WDecision (wrk(i),decision))) =
     "        <Decision>\n"^
     "          <WorkerID>"^(Int.toString i)^"</WorkerID>\n"^
     "          <DecisionValue>"^(if decision = abort then "0" else "1")^"</DecisionValue>\n"^
     "        </Decision>\n"
-  | formatevent (OutEvent (SDecision (decision))) =
+  | format (OutEvent (SDecision (decision))) =
     "        <FinalDecision>"^(if decision = abort then "0" else "1")^"</FinalDecision>";
 
-fun tc_formatter testcases =
-  let
-      val (testvalues,testoracles) = List.partition (fn InEvent _ => true | _ => false) testcases
-      val testvaluesstr = String.concat (List.map formatevent testvalues)
-      val testoraclesstr = String.concat (List.map formatevent testoracles)
-  in
-      "    <TestValues>\n"^
-      testvaluesstr^
-      "    </TestValues>\n"^
-      "    <TestOracles>\n"^
-      testoraclesstr^"\n"^
-      "    </TestOracles>\n"
-  end
-      
-fun tpcoutput testcases = Export.output ("tpctests.xml","TPCTest")
-					(testfn "TPCTest")
-					(testcasefn,tc_formatter) testcases;
+end;
+
+(* setup test case generation for the TPC example *)
+Config.setTCdetect(TPCTCSpec.detection);
+Config.setTCobserve(TPCTCSpec.observation);
+Config.setTCformat(TPCTCSpec.format);
 
 (* logging and output *)
 Config.setModelDir (mbtcpnlibpath^"examples/tpc/");
 Config.setOutputDir ((Config.getModelDir())^"output/");
 
-fun sstpc () = tpcoutput (Execute.ssgenTC ());
+      
+(* 
+fun sstpc () = tpcoutput (Execute.ss ());
 
-fun simtpc () = tpcoutput (Execute.simgenTC 10);
+fun simtpc () = tpcoutput (Execute.sim 10);
+*)
