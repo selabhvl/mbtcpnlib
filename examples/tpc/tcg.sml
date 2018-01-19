@@ -24,7 +24,7 @@ fun format (InEvent (wrk(i),vote)) =
     "          <DecisionValue>"^(if decision = abort then "0" else "1")^"</DecisionValue>\n"^
     "        </Decision>\n"
   | format (OutEvent (SDecision (decision))) =
-    "        <FinalDecision>"^(if decision = abort then "0" else "1")^"</FinalDecision>";
+    "        <FinalDecision>"^(if decision = abort then "0" else "1")^"</FinalDecision>\n";
 
 end;
 
@@ -37,9 +37,6 @@ Config.setTCformat(TPCTCSpec.format);
 Config.setModelDir (mbtcpnlibpath^"examples/tpc/");
 Config.setOutputDir ((Config.getModelDir())^"output/");
 
-      
-(* 
-fun sstpc () = tpcoutput (Execute.ss ());
-
-fun simtpc () = tpcoutput (Execute.sim 10);
-*)
+(* configuration and test case naming *)
+Config.setConfigNaming (fn () => "tpctests");
+Config.setTCNaming(fn i => "CaseID=\""^(Int.toString i)^"\" NumOfWorker=\""^(Int.toString W)^"\"");

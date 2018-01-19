@@ -1,14 +1,13 @@
 structure Export =
 struct
 
-(* exporting for teh TPC example *)
 fun testfn testname teststr =
   "<Test TestName=\""^testname^"\">\n"^
   teststr^
   "</Test>\n";
 
 fun testcasefn (i,teststr) =
-  "  <TestCase CaseID=\""^(Int.toString i)^"\" NumOfWorker=\""^(Int.toString W)^"\">\n"^
+  "  <TestCase "^(Config.getTCName i)^">\n"^
   teststr^
   "  </TestCase>\n"
 
@@ -22,13 +21,13 @@ fun tc_formatter testcases =
       testvaluesstr^
       "    </TestValues>\n"^
       "    <TestOracles>\n"^
-      testoraclesstr^"\n"^
+      testoraclesstr^
       "    </TestOracles>\n"
   end
 
 fun output (filename,testname) testfn (testcasefn,tc_formatter) testcases  =
   let
-      val file = TextIO.openOut((Config.getOutputDir ())^filename);
+      val file = TextIO.openOut((Config.getOutputDir ())^filename^".xml");
 
       val (_,testcasestr) =
 	  List.foldr (fn (test,(i,str)) =>
@@ -48,8 +47,8 @@ fun output (filename,testname) testfn (testcasefn,tc_formatter) testcases  =
       ()
   end
 
-      fun export testcases = output ("tpctests.xml","TPCTest")
-			(testfn "TPCTest")
+      fun export testcases = output (Config.getConfigName (),Config.getConfigName ())
+			(testfn (Config.getConfigName ()))
 			(testcasefn,tc_formatter) testcases;
 
 
