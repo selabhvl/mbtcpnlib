@@ -16,9 +16,10 @@ use (mbtcpnlibpath^"execute/execute.sml");
 
 use (mbtcpnlibpath^"execute/run.sml");
 
-use (mbtcpnlibpath^"examples/tpc/tcg.sml");
-
 fun b() = (use (mbtcpnlibpath^"build.sml"));
 
 fun s() = (use (mbtcpnlibpath^"boot.sml"));
-	 
+
+fun c() = (use (modelpath^"tcg.sml"));
+
+
