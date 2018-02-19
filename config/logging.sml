@@ -18,7 +18,7 @@ fun log msg =
 
 fun start () =
   let
-      val filename = Config.getModelDir()^logfilename
+      val filename = Config.getOutputDir()^logfilename
   in
       (case (!file) of
 	   NONE => (file := SOME (TextIO.openAppend(filename));

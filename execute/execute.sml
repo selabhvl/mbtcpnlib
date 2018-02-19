@@ -11,7 +11,7 @@ fun sim n =
 	  let
 	      val tcs = SIMTCG.gen()
 
-	      val _ = Logging.log ("Run          : "^(Int.toString m)^":"^(Int.toString n));
+	      val _ = Logging.log ("Run          : "^(Int.toString (n-m+1))^":"^(Int.toString n));
 	      val _ = Logging.log ("Configuration: "^(Config.getConfigName ()));
 	      val _ = Logging.log ("Test cases   : "^(Int.toString (List.length tcs)));
 	  in
