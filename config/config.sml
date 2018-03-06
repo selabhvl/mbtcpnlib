@@ -35,7 +35,17 @@ struct
   fun setTCformat formatfn = (tcformat := formatfn);
   fun formatTC event = (!tcformat event);
 
+  (* configuration information for the test *)
+  val configformat = ref (fn () => "");
+  fun setConfigformat configformatfn = (configformat := configformatfn);
+  fun formatConfig () = (!configformat ());
+  
   (* TODO: oracle detection and observation *)
   (* may need to go into a seperate monitor *)
+
+  (* test cases per event *)
+  val testcaseevent = ref false; (* true for single event test case generation *)
+  fun setTestcaseevent bf = (testcaseevent := bf);
+  fun getTestcaseevent () = (!testcaseevent);
   
 end;
