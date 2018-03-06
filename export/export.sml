@@ -16,13 +16,24 @@ fun testcasefn (i,teststr) =
 	      "  </TestCase>\n"
   else teststr;
 
-fun tc_formatter testcases =
+fun tc_formatter testcase =
   let
-      val inoutevents = List.filter (fn InOutEvent _ => true | _ => false) testcases;
-      val testvalues = List.filter (fn InEvent _ => true | _ => false) testcases;
-      val testoracles = List.filter (fn OutEvent _ => true | _ => false) testcases;
+      val inoutevents = List.filter (fn InOutEvent _ => true | _ => false) testcase;
+      val testvalues = List.filter (fn InEvent _ => true | _ => false) testcase;
+      val testoracles = List.filter (fn OutEvent _ => true | _ => false) testcase;
 
-      val unitteststr = String.concat (List.map Config.formatTC inoutevents)
+      (* TODO: numering of unit test cases across several test cases need to be carried forward *)
+      (* global numbering of test cases *)
+
+      val (_,unitteststr) = (List.foldr
+				     (fn (ioevent,(i,str)) =>
+						  (i+1,
+						   str^"  <TestCase "^(Config.getTCName i)^">\n"^
+						   (Config.formatTC ioevent)^"\n"^
+						   "  </TestCase>\n"))	  
+				     (1,"")
+				     inoutevents)
+				      
       val testvaluesstr = String.concat (List.map Config.formatTC testvalues)
       val testoraclesstr = String.concat (List.map Config.formatTC testoracles)
   in
