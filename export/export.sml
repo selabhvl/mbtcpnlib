@@ -3,16 +3,16 @@ struct
 
 fun testfn testname teststr =
   "<Test TestName=\""^testname^"\">\n"^
-  "<Configuration>\n"^
+  "  <Configuration>\n"^
   Config.formatConfig()^
-  "</Configuration>\n"^
+  "  </Configuration>\n"^
   teststr^
   "</Test>\n";
 
 fun testcasefn (i,teststr) =
   if (not (Config.getTestcaseevent()))
 	 then "  <TestCase "^(Config.getTCName i)^">\n"^
-	      teststr^"\n"^
+	      teststr^
 	      "  </TestCase>\n"
   else teststr;
 
@@ -29,7 +29,7 @@ fun tc_formatter testcase =
 				     (fn (ioevent,(i,str)) =>
 						  (i+1,
 						   str^"  <TestCase "^(Config.getTCName i)^">\n"^
-						   (Config.formatTC ioevent)^"\n"^
+						   (Config.formatTC ioevent)^
 						   "  </TestCase>\n"))	  
 				     (1,"")
 				     inoutevents)
@@ -37,9 +37,13 @@ fun tc_formatter testcase =
       val testvaluesstr = String.concat (List.map Config.formatTC testvalues)
       val testoraclesstr = String.concat (List.map Config.formatTC testoracles)
   in
-      unitteststr^"\n"^
-      testvaluesstr^"\n"^
-      testoraclesstr
+      unitteststr^
+      (if testvaluesstr <> ""
+       then "    <TestValues>\n"^testvaluesstr^"    </TestValues>\n"
+       else "")^
+      (if testoraclesstr <> ""
+       then "    <TestOracles>\n"^testoraclesstr^"    </TestOracles>\n"
+       else "")
   end
 
 fun output (filename,testname) testfn (testcasefn,tc_formatter) testcases  =
