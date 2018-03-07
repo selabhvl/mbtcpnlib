@@ -33,4 +33,6 @@ fun stop() =
 		       TextIO.closeOut(stream);
 		       file := NONE);
 
+fun sep() = log ("===========================================");
+  
 end;
