@@ -11,8 +11,9 @@ fun sim n =
 	  let
 	      val tcs = SIMTCG.gen()
 
-	      val _ = Logging.log ("Run          : "^(Int.toString (n-m+1))^":"^(Int.toString n));
+	      val _ = Logging.log ("Simulation   : "^(Int.toString (n-m+1))^":"^(Int.toString n));
 	      val _ = Logging.log ("Configuration: "^(Config.getConfigName ()));
+	      val _ = Logging.log ("Steps        : "^(IntInf.toString (step())));
 	      val _ = Logging.log ("Test cases   : "^(Int.toString (List.length tcs)));
 	  in
 	      simrun (m-1)
@@ -29,11 +30,14 @@ fun sim n =
       val _ = simrun n;
       
       val _ = Logging.log ("Completed");
+      
+      val tcs = SimConfig.getTestcases();
+      val _ = Logging.log ("Total cases  : "^(Int.toString (List.length tcs)));
       val _ = Logging.sep();
       
       val _ = Logging.stop ();
   in
-      SimConfig.getTestcases()
+      tcs 
   end;
 
 (* state-space based test case generation *)

@@ -3,7 +3,7 @@ struct
 
 fun gen () =
   let
-      (* val _ = SimConfig.init();*)
+      val _ = SimConfig.clear();
       
       val _ = CPN'Sim.init_all();
       val _ = CPN'Sim.run();

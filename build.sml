@@ -18,8 +18,8 @@ use (mbtcpnlibpath^"execute/run.sml");
 
 fun b() = (use (mbtcpnlibpath^"build.sml"));
 
-fun s() = (use (mbtcpnlibpath^"boot.sml"));
+fun t() = (use (modelpath^"tcg.sml"));
 
-fun c() = (use (modelpath^"tcg.sml"));
+fun s() = (use (modelpath^"tcg-si.sml"));
 
 

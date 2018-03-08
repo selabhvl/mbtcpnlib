@@ -37,3 +37,20 @@ fun stop() =
   end;
 
 end
+
+(* dummy structures for sim-based test case generation *)
+structure Bind =
+struct
+type Elem = int;
+end;
+
+fun OutArcs _ = [];
+fun OutNodes _ = [];
+fun DestNode _ = 1;
+fun NoOfNodes () = 1;
+val InitNode = 1;
+fun ListDeadMarkings () = [];
+fun ArcToBE _ = 1;
+fun DeleteStateSpace () = ();
+fun CalculateOccGraph () = ();
+fun NoOfArcs () = 1;
