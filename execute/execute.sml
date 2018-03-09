@@ -2,7 +2,13 @@ structure Execute : TCGEN =
 struct
 
 (* simulation-based test case generation *)
-    
+
+fun tcscount tcs = (if (Config.getTestcaseevent ())
+		    then   List.length (remdupl (List.concat tcs))
+		    else (List.length tcs));
+
+(* List.foldr (fn (tc,c) => c+(List.length tc)) 0 tcs; *)
+
 fun sim n =
   let
       fun simrun 0 = ()
@@ -32,7 +38,9 @@ fun sim n =
       val _ = Logging.log ("Completed");
       
       val tcs = SimConfig.getTestcases();
-      val _ = Logging.log ("Total cases  : "^(Int.toString (List.length tcs)));
+      val tcsc = tcscount tcs; 
+      
+      val _ = Logging.log ("Total cases  : "^(Int.toString (tcsc)));
       val _ = Logging.sep();
       
       val _ = Logging.stop ();
@@ -61,7 +69,10 @@ fun ss () =
 
       val tcs = SSTCG.gen();
       
-      val _ = Logging.log ("Completed: "^(Int.toString (List.length tcs)));
+      val _ = Logging.log ("Completed");
+      val tcsc = tcscount tcs; 
+      
+      val _ = Logging.log ("Total cases  : "^(Int.toString (tcsc)));
 
       val _ = Logging.sep();
       val _ = Logging.stop ();
