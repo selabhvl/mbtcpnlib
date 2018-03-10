@@ -26,6 +26,7 @@ fun sim n =
 	  end
 
 
+
       val _ = Logging.start ();
       val _ = Logging.sep();
       val _ = Logging.log ("Simulation-based test-case generation");
@@ -33,7 +34,11 @@ fun sim n =
       
       val _ = SimConfig.init();
 
+      val timer = Timer.totalCPUTimer ();
+      
       val _ = simrun n;
+      val t = Timer.checkCPUTimer timer;
+      val gentime = Time.+(#usr t,#sys t);
       
       val _ = Logging.log ("Completed");
       
@@ -41,6 +46,12 @@ fun sim n =
       val tcsc = tcscount tcs; 
       
       val _ = Logging.log ("Total cases  : "^(Int.toString (tcsc)));
+      val _ = Logging.sep();
+      val _ = Logging.log ("SIM RESULT: "^
+			   (Int.toString tcsc)^" "^
+			   (Config.getConfigName ())^" "^
+			   (Time.toString gentime));
+      
       val _ = Logging.sep();
       
       val _ = Logging.stop ();
@@ -62,18 +73,28 @@ fun ss () =
       val _ = Logging.log ("Configuration: "^(Config.getConfigName ()));
 
       val _ = Logging.log ("Generating state space ... "^(Int.toString (NoOfNodes ())));
+
+      val timer = Timer.totalCPUTimer ();
       val _ = CalculateOccGraph();
 
       val _ = Logging.log ("Completed: "^(Int.toString (NoOfNodes()))^" "^(Int.toString (NoOfArcs())));
       val _ = Logging.log ("Generating test cases ...");
 
       val tcs = SSTCG.gen();
-      
+
+      val t = Timer.checkCPUTimer timer;
+      val gentime = Time.+(#usr t,#sys t);
+
       val _ = Logging.log ("Completed");
       val tcsc = tcscount tcs; 
       
       val _ = Logging.log ("Total cases  : "^(Int.toString (tcsc)));
 
+      val _ = Logging.sep();
+      val _ = Logging.log ("SS RESULT: "^
+			   (Int.toString tcsc)^" "^
+			   (Config.getConfigName ())^" "^
+      			   (Time.toString gentime));
       val _ = Logging.sep();
       val _ = Logging.stop ();
   in
