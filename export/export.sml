@@ -25,6 +25,7 @@ fun tc_formatter testcase =
       (* TODO: numering of unit test cases across several test cases need to be carried forward *)
       (* global numbering of test cases *)
 
+      (* 
       val (_,unitteststr) = (List.foldr
 				     (fn (ioevent,(i,str)) =>
 						  (i+1,
@@ -32,8 +33,8 @@ fun tc_formatter testcase =
 						   (Config.formatTC ioevent)^
 						   "  </TestCase>\n"))	  
 				     (1,"")
-				     inoutevents)
-				      
+				     inoutevents)*)
+      val unitteststr = String.concat (List.map Config.formatTC inoutevents)
       val testvaluesstr = String.concat (List.map Config.formatTC testvalues)
       val testoraclesstr = String.concat (List.map Config.formatTC testoracles)
   in

@@ -1,4 +1,4 @@
-structure Execute : TCGEN =
+structure Execute (* : TCGEN *) =
 struct
 
 (* simulation-based test case generation *)
@@ -9,6 +9,32 @@ fun tcscount tcs = (if (Config.getTestcaseevent ())
 
 (* List.foldr (fn (tc,c) => c+(List.length tc)) 0 tcs; *)
 
+(* TODO: 
+   simpler to split out InOut events as seperate test cases after generation 
+
+   - need to also apply duplicate elimination as in simconfig
+   - counting must be modified to simply use List length
+   - setting to distinugush in formatting between unit and system test can be remove *)
+						   
+fun tc_expandio tc =
+  let
+      fun isIOEvent (InOutEvent _) = true
+	| isIOEvent _ = false;
+      
+      val (ioevents,tc') = List.partition isIOEvent tc;
+      val iotests = List.map (fn ioevent => [ioevent]) ioevents; 
+  in
+      if (tc' <> [])
+      then tc'::iotests
+      else iotests
+  end
+
+fun tcs_expandio tcs = List.concat (List.map (fn tc => tc_expandio tc) tcs);
+  
+fun remdupl tcs = List.foldr (fn (tc,tcs) => if (SimConfig.tc_exists tc tcs)
+					     then tcs
+					     else tc::tcs) [] tcs; 
+      
 fun sim n =
   let
       fun simrun 0 = ()
@@ -35,15 +61,18 @@ fun sim n =
       val _ = SimConfig.init();
 
       val timer = Timer.totalCPUTimer ();
-      
+
+      val t0 = Timer.checkCPUTimer timer;
+
       val _ = simrun n;
-      val t = Timer.checkCPUTimer timer;
-      val gentime = Time.+(#usr t,#sys t);
+
+      val t1 = Timer.checkCPUTimer timer;
+      val gentime = Time.-(Time.+(#usr t1,#sys t1),Time.+(#usr t0,#sys t0));
       
       val _ = Logging.log ("Completed");
       
-      val tcs = SimConfig.getTestcases();
-      val tcsc = tcscount tcs; 
+      val tcs = remdupl (tcs_expandio (SimConfig.getTestcases()));
+      val tcsc = List.length tcs (* tcscount tcs;*) 
       
       val _ = Logging.log ("Total cases  : "^(Int.toString (tcsc)));
       val _ = Logging.sep();
@@ -75,18 +104,19 @@ fun ss () =
       val _ = Logging.log ("Generating state space ... "^(Int.toString (NoOfNodes ())));
 
       val timer = Timer.totalCPUTimer ();
+      val t0 = Timer.checkCPUTimer timer;
       val _ = CalculateOccGraph();
 
       val _ = Logging.log ("Completed: "^(Int.toString (NoOfNodes()))^" "^(Int.toString (NoOfArcs())));
       val _ = Logging.log ("Generating test cases ...");
 
-      val tcs = SSTCG.gen();
+      val tcs = remdupl (tcs_expandio (SSTCG.gen()));
 
-      val t = Timer.checkCPUTimer timer;
-      val gentime = Time.+(#usr t,#sys t);
+      val t1 = Timer.checkCPUTimer timer;
+      val gentime = Time.-(Time.+(#usr t1,#sys t1),Time.+(#usr t0,#sys t0));
 
       val _ = Logging.log ("Completed");
-      val tcsc = tcscount tcs; 
+      val tcsc = List.length tcs (* tcscount tcs; *) 
       
       val _ = Logging.log ("Total cases  : "^(Int.toString (tcsc)));
 
