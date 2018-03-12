@@ -1,4 +1,4 @@
-use (mbtcpnlibpath^"config/config.sml");
+use (mbtcpnlibpath^"config/config.sml"); (* REMOVE ? *)
 
 use (mbtcpnlibpath^"config/logging.sml");
 
@@ -22,4 +22,8 @@ fun t() = (use (modelpath^"tcg.sml"));
 
 fun s() = (use (modelpath^"tcg-si.sml"));
 
+fun boot() = (use (mbtcpnlibpath^"config/simconfig.sml");
+	      use (mbtcpnlibpath^"config/config.sml");
+	      use (modelpath^"tcg-common.sml"));
+		   
 
