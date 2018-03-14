@@ -59,7 +59,8 @@ fun sim n =
       val _ = Logging.log ("Configuration: "^(Config.getConfigName ()));
       
       val _ = SimConfig.init();
-
+      val _ = Logging.log ("Test cases start : "^(Int.toString (List.length (SimConfig.getTestcases()))));
+      
       val timer = Timer.totalCPUTimer ();
 
       val t0 = Timer.checkCPUTimer timer;
