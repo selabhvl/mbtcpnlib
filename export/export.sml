@@ -49,6 +49,11 @@ fun tc_formatter testcase =
        else "")
   end
 
+(* TODO: eventually move into the configuration module *)
+val seperate = ref false;
+fun setsep sep = (seperate := sep);
+fun sep() = (!seperate);
+		
 fun output (filename,testname) testfn (testcasefn,tc_formatter) testcases  =
   let
       val file = TextIO.openOut((Config.getOutputDir ())^filename^".xml");
@@ -71,9 +76,33 @@ fun output (filename,testname) testfn (testcasefn,tc_formatter) testcases  =
       ()
   end
 
-      fun export testcases = output (Config.getConfigName (),Config.getConfigName ())
-			(testfn (Config.getConfigName ()))
-			(testcasefn,tc_formatter) testcases;
+fun output_seperate (filename,testname) testfn (testcasefn,tc_formatter) testcases  =
+  let
+      val _ = List.foldr (fn (test,i) =>
+			     let
+				 val testcasestr = testcasefn (i,tc_formatter test)
+				 val file = TextIO.openOut((Config.getOutputDir ())^
+							   filename^"-"^
+							   (Int.toString i)^
+							   ".xml");
+				 val teststr = testfn testcasestr		      
+				 val _ = TextIO.output(file,teststr)
+				 val _ = TextIO.closeOut(file)				 
+			     in
+				 i+1
+			     end)
+			 1
+			 testcases;
+  in
+      ()
+  end
 
+fun export testcases =
+  if (sep()) then output_seperate (Config.getConfigName (),Config.getConfigName ())
+				  (testfn (Config.getConfigName ()))
+				  (testcasefn,tc_formatter) testcases
+  else output (Config.getConfigName (),Config.getConfigName ())
+	      (testfn (Config.getConfigName ()))
+	      (testcasefn,tc_formatter) testcases;
 
 end;
