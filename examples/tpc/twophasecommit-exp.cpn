@@ -181,14 +181,14 @@ end;</layout>
     val yesworkers = YesWorkers votes
     val decision = (if (List.length yesworkers = W) then commit else abort)
   in
-    List.map (fn w =&gt; (w,decision)) yesworkers
+    List.map (fn w =&gt; (w,decision)) (Worker.all())
 end
           <layout>fun InformYesWorkers votes = 
   let 
     val yesworkers = YesWorkers votes
     val decision = (if (List.length yesworkers = W) then commit else abort)
   in
-    List.map (fn w =&gt; (w,decision)) yesworkers
+    List.map (fn w =&gt; (w,decision)) (Worker.all())
 end</layout>
         </ml>
         <ml id="ID1429638224">fun All votes = (List.length votes = W)
@@ -1774,7 +1774,7 @@ Acknowledgements</text>
                    currentcyckle="2"/>
         <transend idref="ID1429909289"/>
         <placeend idref="ID1429909286"/>
-        <annot id="ID1591783464">
+        <annot id="ID1591784609">
           <posattr x="-158.000000"
                    y="133.000000"/>
           <fillattr colour="White"
@@ -1806,7 +1806,7 @@ Acknowledgements</text>
                    currentcyckle="2"/>
         <transend idref="ID1429909289"/>
         <placeend idref="ID1429909280"/>
-        <annot id="ID1591783465">
+        <annot id="ID1591784610">
           <posattr x="-158.000000"
                    y="51.000000"/>
           <fillattr colour="White"
@@ -1998,7 +1998,7 @@ Acknowledgements</text>
                    currentcyckle="2"/>
         <transend idref="ID1429918629"/>
         <placeend idref="ID1429909280"/>
-        <annot id="ID1591783466">
+        <annot id="ID1591784611">
           <posattr x="-158.000000"
                    y="-38.000000"/>
           <fillattr colour="White"
@@ -2673,7 +2673,7 @@ OneVote</text>
                    currentcyckle="2"/>
         <transend idref="ID1429918645"/>
         <placeend idref="ID1429918662"/>
-        <annot id="ID1591783467">
+        <annot id="ID1591784612">
           <posattr x="-158.000000"
                    y="21.000000"/>
           <fillattr colour="White"
@@ -2769,7 +2769,7 @@ OneVote</text>
                    currentcyckle="2"/>
         <transend idref="ID1429940726"/>
         <placeend idref="ID1429918662"/>
-        <annot id="ID1591783468">
+        <annot id="ID1591784613">
           <posattr x="-51.000000"
                    y="120.000000"/>
           <fillattr colour="White"
@@ -2912,6 +2912,20 @@ OneVote</text>
         <guideline_elm idref="ID1429940509"/>
         <guideline_elm idref="ID1429940726"/>
       </vguideline>
+      <Aux id="ID1591785802">
+        <posattr x="105.000000"
+                 y="-294.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <label/>
+        <text>InformYesWorkers;</text>
+      </Aux>
     </page>
     <page id="ID1429913982">
       <pageattr name="Workers"/>
@@ -3493,7 +3507,7 @@ Decision</text>
           <text tool="CPN Tools"
                 version="4.0.1">if vote = Yes
 then 1`w 
-else empty</text>
+else 1`w</text>
         </annot>
       </arc>
       <arc id="ID1429914006"
@@ -3681,7 +3695,7 @@ else empty</text>
                     bold="false"/>
           <text tool="CPN Tools"
                 version="4.0.1">if vote = No
-then 1`w
+then empty
 else empty</text>
         </annot>
       </arc>
@@ -4259,16 +4273,45 @@ else empty</text>
         </zorder>
       </cpnbinder>
       <cpnbinder id="ID1590618120"
-                 x="622"
-                 y="48"
+                 x="521"
+                 y="-10"
                  width="1337"
                  height="685">
         <sheets>
           <cpnsheet id="ID1590605424"
-                    panx="84.000000"
-                    pany="68.000000"
+                    panx="85.000000"
+                    pany="64.000000"
                     zoom="1.000000"
                     instance="ID1590605336">
+            <zorder>
+              <position value="0"/>
+            </zorder>
+          </cpnsheet>
+          <cpnsheet id="ID1591784391"
+                    panx="41.000000"
+                    pany="-78.000000"
+                    zoom="1.000000"
+                    instance="ID1429909380">
+            <zorder>
+              <position value="1"/>
+              <position value="0"/>
+            </zorder>
+          </cpnsheet>
+          <cpnsheet id="ID1591784423"
+                    panx="-427.000000"
+                    pany="-22.000000"
+                    zoom="1.000000"
+                    instance="ID1429914065">
+            <zorder>
+              <position value="1"/>
+              <position value="0"/>
+            </zorder>
+          </cpnsheet>
+          <cpnsheet id="ID1591785556"
+                    panx="-323.000000"
+                    pany="-128.000000"
+                    zoom="1.000000"
+                    instance="ID1429918693">
             <zorder>
               <position value="0"/>
             </zorder>
@@ -4276,6 +4319,9 @@ else empty</text>
         </sheets>
         <zorder>
           <position value="0"/>
+          <position value="2"/>
+          <position value="1"/>
+          <position value="3"/>
         </zorder>
       </cpnbinder>
     </binders>
@@ -4479,7 +4525,9 @@ end</layout>
           <IndexNode expanded="false"/>
         </IndexNode>
       </IndexNode>
-      <IndexNode expanded="false"/>
+      <IndexNode expanded="false">
+        <IndexNode expanded="false"/>
+      </IndexNode>
       <IndexNode expanded="true">
         <IndexNode expanded="false">
           <IndexNode expanded="true"/>
@@ -4510,12 +4558,12 @@ end</layout>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
         </IndexNode>
-        <IndexNode expanded="false">
+        <IndexNode expanded="true">
           <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
-          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
         </IndexNode>
         <IndexNode expanded="true">
@@ -4527,7 +4575,7 @@ end</layout>
           <IndexNode expanded="true"/>
         </IndexNode>
       </IndexNode>
-      <IndexNode expanded="true">
+      <IndexNode expanded="false">
         <IndexNode expanded="true">
           <IndexNode expanded="false">
             <IndexNode expanded="false"/>
