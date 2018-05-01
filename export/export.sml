@@ -16,6 +16,8 @@ fun testcasefn (i,teststr) =
 	      "  </TestCase>\n"
   else teststr;
 
+fun setsep _ = ();
+
 fun tc_formatter testcase =
   let
       val inoutevents = List.filter (fn InOutEvent _ => true | _ => false) testcase;
