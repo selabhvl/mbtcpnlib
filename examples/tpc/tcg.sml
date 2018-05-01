@@ -49,5 +49,5 @@ Config.setModelDir (mbtcpnlibpath^"examples/tpc/");
 Config.setOutputDir ((Config.getModelDir())^"output/");
 
 (* configuration and test case naming *)
-Config.setConfigNaming (fn () => "tpctests");
+Config.setConfigNaming (fn () => "tpctests-ss-"^(Int.toString W));
 Config.setTCNaming(fn i => "CaseID=\""^(Int.toString i)^"\" NumOfWorker=\""^(Int.toString W)^"\"");
