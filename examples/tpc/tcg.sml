@@ -26,12 +26,15 @@ fun format (InEvent (wrk(i),vote)) =
   | format (OutEvent (SDecision (decision))) =
     "        <FinalDecision>"^(if decision = abort then "0" else "1")^"</FinalDecision>\n";
 
+fun normalise tce = tce;
+
 end;
 
 (* setup test case generation for the TPC example *)
 Config.setTCdetect(TPCTCSpec.detection);
 Config.setTCobserve(TPCTCSpec.observation);
 Config.setTCformat(TPCTCSpec.format);
+Config.setTCnormal(TPCTCSpec.normalise);
 
 (* logging and output *)
 Config.setModelDir (mbtcpnlibpath^"examples/tpc/");

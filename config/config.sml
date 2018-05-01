@@ -39,6 +39,11 @@ struct
   val configformat = ref (fn () => "");
   fun setConfigformat configformatfn = (configformat := configformatfn);
   fun formatConfig () = (!configformat ());
+
+  (* normalisation function for test case events *)
+  val tcnormal = ref (fn (tce : (TCEvent list)) => (tce: TCEvent list));
+  fun setTCnormal confignormalfn = (tcnormal := confignormalfn);
+  fun normalTC tce = (!tcnormal tce);
   
   (* TODO: oracle detection and observation *)
   (* may need to go into a seperate monitor *)

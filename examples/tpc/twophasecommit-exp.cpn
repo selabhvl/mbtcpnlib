@@ -3970,6 +3970,20 @@ else empty</text>
              h="58.000000"
              curvature="0"/>
       </Aux>
+      <Aux id="ID1591786080">
+        <posattr x="-684.000000"
+                 y="-114.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <label/>
+        <text>use (mbtcpnlibpath^&quot;config/config.sml&quot;);</text>
+      </Aux>
     </page>
     <instances>
       <instance id="ID2149"
@@ -4273,8 +4287,8 @@ else empty</text>
         </zorder>
       </cpnbinder>
       <cpnbinder id="ID1590618120"
-                 x="521"
-                 y="-10"
+                 x="491"
+                 y="29"
                  width="1337"
                  height="685">
         <sheets>
@@ -4318,10 +4332,10 @@ else empty</text>
           </cpnsheet>
         </sheets>
         <zorder>
-          <position value="0"/>
           <position value="2"/>
           <position value="1"/>
           <position value="3"/>
+          <position value="0"/>
         </zorder>
       </cpnbinder>
     </binders>

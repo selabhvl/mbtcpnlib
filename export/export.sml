@@ -61,6 +61,7 @@ fun output (filename,testname) testfn (testcasefn,tc_formatter) testcases  =
       val (_,testcasestr) =
 	  List.foldr (fn (test,(i,str)) =>
 			 let
+			     val test = Config.normalTC test;
 			     val testcasestr = testcasefn (i,tc_formatter test)
 			 in
 			     (i+1,str^testcasestr)
