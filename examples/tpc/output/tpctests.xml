@@ -13,15 +13,15 @@
       </Votes>
     </TestValues>
     <TestOracles>
-        <FinalDecision>0</FinalDecision>
-        <Decision>
-          <WorkerID>2</WorkerID>
-          <DecisionValue>0</DecisionValue>
-        </Decision>
         <Decision>
           <WorkerID>1</WorkerID>
           <DecisionValue>0</DecisionValue>
         </Decision>
+        <Decision>
+          <WorkerID>2</WorkerID>
+          <DecisionValue>0</DecisionValue>
+        </Decision>
+        <FinalDecision>0</FinalDecision>
     </TestOracles>
   </TestCase>
   <TestCase CaseID="2" NumOfWorker="2">
@@ -37,11 +37,11 @@
     </TestValues>
     <TestOracles>
         <Decision>
-          <WorkerID>2</WorkerID>
+          <WorkerID>1</WorkerID>
           <DecisionValue>0</DecisionValue>
         </Decision>
         <Decision>
-          <WorkerID>1</WorkerID>
+          <WorkerID>2</WorkerID>
           <DecisionValue>0</DecisionValue>
         </Decision>
         <FinalDecision>0</FinalDecision>

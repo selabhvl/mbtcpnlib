@@ -26,7 +26,15 @@ fun format (InEvent (wrk(i),vote)) =
   | format (OutEvent (SDecision (decision))) =
     "        <FinalDecision>"^(if decision = abort then "0" else "1")^"</FinalDecision>\n";
 
-fun normalise tce = tce;
+fun sort_fn (InEvent _,OutEvent _) = true
+  | sort_fn (InEvent (w1,_),InEvent (w2,_)) = Worker.lt(w1,w2)
+  | sort_fn (OutEvent (WDecision (w1,_)),OutEvent (WDecision (w2,_))) = Worker.lt(w1,w2)
+  | sort_fn (OutEvent (WDecision _),OutEvent (SDecision _)) = true
+  | sort_fn (OutEvent (SDecision _),OutEvent (WDecision _)) = false
+  | sort_fn (OutEvent (SDecision _),OutEvent (SDecision _)) = true
+  | sort_fn (_,_) = false; 
+
+fun normalise tce = sort sort_fn tce;
 
 end;
 
