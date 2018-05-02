@@ -3,83 +3,14 @@
   </Configuration>
   <TestCase CaseID="1" NumOfWorker="2">
     <TestValues>
-      <Votes>
-        <WorkerID>1</WorkerID>
-        <VoteValue>0</VoteValue>
-      </Votes>
-      <Votes>
-        <WorkerID>2</WorkerID>
-        <VoteValue>0</VoteValue>
-      </Votes>
-    </TestValues>
-    <TestOracles>
-        <Decision>
-          <WorkerID>1</WorkerID>
-          <DecisionValue>0</DecisionValue>
-        </Decision>
-        <Decision>
-          <WorkerID>2</WorkerID>
-          <DecisionValue>0</DecisionValue>
-        </Decision>
-        <FinalDecision>0</FinalDecision>
-    </TestOracles>
-  </TestCase>
-  <TestCase CaseID="2" NumOfWorker="2">
-    <TestValues>
-      <Votes>
-        <WorkerID>1</WorkerID>
-        <VoteValue>0</VoteValue>
-      </Votes>
-      <Votes>
-        <WorkerID>2</WorkerID>
-        <VoteValue>1</VoteValue>
-      </Votes>
-    </TestValues>
-    <TestOracles>
-        <Decision>
-          <WorkerID>1</WorkerID>
-          <DecisionValue>0</DecisionValue>
-        </Decision>
-        <Decision>
-          <WorkerID>2</WorkerID>
-          <DecisionValue>0</DecisionValue>
-        </Decision>
-        <FinalDecision>0</FinalDecision>
-    </TestOracles>
-  </TestCase>
-  <TestCase CaseID="3" NumOfWorker="2">
-    <TestValues>
-      <Votes>
+      <Vote>
         <WorkerID>1</WorkerID>
         <VoteValue>1</VoteValue>
-      </Votes>
-      <Votes>
-        <WorkerID>2</WorkerID>
-        <VoteValue>0</VoteValue>
-      </Votes>
-    </TestValues>
-    <TestOracles>
-        <Decision>
-          <WorkerID>1</WorkerID>
-          <DecisionValue>0</DecisionValue>
-        </Decision>
-        <Decision>
-          <WorkerID>2</WorkerID>
-          <DecisionValue>0</DecisionValue>
-        </Decision>
-        <FinalDecision>0</FinalDecision>
-    </TestOracles>
-  </TestCase>
-  <TestCase CaseID="4" NumOfWorker="2">
-    <TestValues>
-      <Votes>
-        <WorkerID>1</WorkerID>
-        <VoteValue>1</VoteValue>
-      </Votes>
-      <Votes>
+      </Vote>
+      <Vote>
         <WorkerID>2</WorkerID>
         <VoteValue>1</VoteValue>
-      </Votes>
+      </Vote>
     </TestValues>
     <TestOracles>
         <Decision>
@@ -91,6 +22,75 @@
           <DecisionValue>1</DecisionValue>
         </Decision>
         <FinalDecision>1</FinalDecision>
+    </TestOracles>
+  </TestCase>
+  <TestCase CaseID="2" NumOfWorker="2">
+    <TestValues>
+      <Vote>
+        <WorkerID>1</WorkerID>
+        <VoteValue>1</VoteValue>
+      </Vote>
+      <Vote>
+        <WorkerID>2</WorkerID>
+        <VoteValue>0</VoteValue>
+      </Vote>
+    </TestValues>
+    <TestOracles>
+        <Decision>
+          <WorkerID>1</WorkerID>
+          <DecisionValue>1</DecisionValue>
+        </Decision>
+        <Decision>
+          <WorkerID>2</WorkerID>
+          <DecisionValue>1</DecisionValue>
+        </Decision>
+        <FinalDecision>1</FinalDecision>
+    </TestOracles>
+  </TestCase>
+  <TestCase CaseID="3" NumOfWorker="2">
+    <TestValues>
+      <Vote>
+        <WorkerID>1</WorkerID>
+        <VoteValue>0</VoteValue>
+      </Vote>
+      <Vote>
+        <WorkerID>2</WorkerID>
+        <VoteValue>1</VoteValue>
+      </Vote>
+    </TestValues>
+    <TestOracles>
+        <Decision>
+          <WorkerID>1</WorkerID>
+          <DecisionValue>1</DecisionValue>
+        </Decision>
+        <Decision>
+          <WorkerID>2</WorkerID>
+          <DecisionValue>1</DecisionValue>
+        </Decision>
+        <FinalDecision>1</FinalDecision>
+    </TestOracles>
+  </TestCase>
+  <TestCase CaseID="4" NumOfWorker="2">
+    <TestValues>
+      <Vote>
+        <WorkerID>1</WorkerID>
+        <VoteValue>0</VoteValue>
+      </Vote>
+      <Vote>
+        <WorkerID>2</WorkerID>
+        <VoteValue>0</VoteValue>
+      </Vote>
+    </TestValues>
+    <TestOracles>
+        <Decision>
+          <WorkerID>1</WorkerID>
+          <DecisionValue>0</DecisionValue>
+        </Decision>
+        <Decision>
+          <WorkerID>2</WorkerID>
+          <DecisionValue>0</DecisionValue>
+        </Decision>
+        <FinalDecision>0</FinalDecision>
     </TestOracles>
   </TestCase>
 </Test>

@@ -14,17 +14,17 @@ fun observation (Bind.Workers'Receive_CanCommit (_,{w,vote}))  = [InEvent (w,vot
   | observation _ = raise obsExn; 
 
 fun format (InEvent (wrk(i),vote)) =
-  "      <Votes>\n"^
+  "      <Vote>\n"^
   "        <WorkerID>"^(Int.toString i)^"</WorkerID>\n"^
-  "        <VoteValue>"^(if vote = No then "0" else "1")^"</VoteValue>\n"^
-  "      </Votes>\n"
+  "        <VoteValue>"^(if vote = No then "1" else "0")^"</VoteValue>\n"^
+  "      </Vote>\n"
   | format (OutEvent (WDecision (wrk(i),decision))) =
     "        <Decision>\n"^
     "          <WorkerID>"^(Int.toString i)^"</WorkerID>\n"^
-    "          <DecisionValue>"^(if decision = abort then "0" else "1")^"</DecisionValue>\n"^
+    "          <DecisionValue>"^(if decision = abort then "1" else "0")^"</DecisionValue>\n"^
     "        </Decision>\n"
   | format (OutEvent (SDecision (decision))) =
-    "        <FinalDecision>"^(if decision = abort then "0" else "1")^"</FinalDecision>\n";
+    "        <FinalDecision>"^(if decision = abort then "1" else "0")^"</FinalDecision>\n";
 
 fun sort_fn (InEvent _,OutEvent _) = true
   | sort_fn (InEvent (w1,_),InEvent (w2,_)) = Worker.lt(w1,w2)
