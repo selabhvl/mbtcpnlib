@@ -1,6 +1,12 @@
 structure Export =
 struct
 
+(* should eventuelly be added into the Export module of the library *)
+fun idnt n = String.concat (List.tabulate(n,fn _ => " "));
+
+fun tag l tagname str = (idnt l)^"<"^tagname^">"^str^"</"^tagname^">\n";
+fun tagnl l tagname str = (idnt l)^"<"^tagname^">\n"^str^(idnt l)^"</"^tagname^">\n";
+
 fun testfn testname teststr =
   "<Test TestName=\""^testname^"\">\n"^
   "  <Configuration>\n"^
