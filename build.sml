@@ -1,8 +1,9 @@
 fun b() = (use (mbtcpnlibpath^"build.sml"));
 
-fun t() = (use (modelpath^"tcg.sml"));
+fun ss() = (use (modelpath^"tcg.sml");
+	    use (modelpath^"tcg-common.sml"));
 
-fun s() = (use (modelpath^"tcg-si.sml"));
+fun si() = (use (modelpath^"tcg-common.sml"));
 
 fun boot() = (use (mbtcpnlibpath^"config/simconfig.sml");
 	      use (mbtcpnlibpath^"config/config.sml");

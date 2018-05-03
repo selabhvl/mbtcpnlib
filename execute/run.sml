@@ -1,7 +1,7 @@
 (* model-dependent configuration of test case generation *)
 datatype strategy = SS | SIM of int;
 
-fun run SS =
+fun run SS _ =
   let
       val name = Config.getConfigName();
       val _ = Config.setConfigNaming (fn () => "ss-"^name);
@@ -10,18 +10,18 @@ fun run SS =
   in
       Config.setConfigNaming (fn () => name)
   end
-  | run (SIM m) =
+  | run (SIM m) outr =
     let
 	val name = Config.getConfigName();
 	val _ = Config.setConfigNaming (fn () => "si-"^(Int.toString m)^"-"^name);
 
-        val tcs = Execute.sim m
+        val tcs = Execute.sim (m,outr)
         val _ = Execute.export tcs
     in
       Config.setConfigNaming (fn () => name)
     end
 
-fun runall configs = List.app run configs;
+fun runall outr configs = List.app (fn config => run config outr) configs;
 
 (*
 fun run config =

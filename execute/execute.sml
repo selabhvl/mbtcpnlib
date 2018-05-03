@@ -35,18 +35,24 @@ fun remdupl tcs = List.foldr (fn (tc,tcs) => if (SimConfig.tc_exists tc tcs)
 					     then tcs
 					     else tc::tcs) [] tcs; 
       
-fun sim n =
+fun sim (n,outr) =
   let
       fun simrun 0 = ()
 	| simrun m  =
 
 	  let
 	      val tcs = SIMTCG.gen()
+	      val _ = (if ((Int.mod(m,outr) = 0))
+		       then (let
+				val _ = Logging.log ("Simulation   : "^(Int.toString (n-m+1))^":"^(Int.toString n));
+				val _ = Logging.log ("Configuration: "^(Config.getConfigName ()));
+				val _ = Logging.log ("Steps        : "^(IntInf.toString (step())));
+				val _ = Logging.log ("Test cases   : "^(Int.toString (List.length tcs)));
+			    in
+				()
+			    end)
+		       else ())
 
-	      val _ = Logging.log ("Simulation   : "^(Int.toString (n-m+1))^":"^(Int.toString n));
-	      val _ = Logging.log ("Configuration: "^(Config.getConfigName ()));
-	      val _ = Logging.log ("Steps        : "^(IntInf.toString (step())));
-	      val _ = Logging.log ("Test cases   : "^(Int.toString (List.length tcs)));
 	  in
 	      simrun (m-1)
 	  end
