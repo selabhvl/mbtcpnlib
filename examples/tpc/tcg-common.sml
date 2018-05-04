@@ -43,4 +43,4 @@ val configs5 = [SS,(SIM 100),(SIM 200)]
 
 val configs10 = [(SIM 5000)(*,(SIM 10000)*)]
 
-val configs20 = [(SIM 10000),(SIM 20000)]		   
+val configs15 = [(*(SIM 10000),*)(SIM 20000)]		   

@@ -63,20 +63,24 @@ fun sep() = (!seperate);
 fun output (filename,testname) testfn (testcasefn,tc_formatter) testcases  =
   let
       val file = TextIO.openOut((Config.getOutputDir ())^filename^".xml");
+      val _ = TextIO.output(file,"<Test TestName=\""^testname^"\">\n"^
+				 "  <Configuration>\n"^
+				 (Config.formatConfig())^
+			         "</Configuration>\n");
 
-      val (_,testcasestr) =
-	  List.foldr (fn (test,(i,str)) =>
+      val _ =
+	  List.foldr (fn (test,i) =>
 			 let
 			     val test = Config.normalTC test;
 			     val testcasestr = testcasefn (i,tc_formatter test)
+			     val _ = TextIO.output(file,testcasestr);
 			 in
-			     (i+1,str^testcasestr)
+			     (i+1)
 			 end)
-		     (1,"")
+		     1
 		     testcases;
-      
-      val teststr = testfn testcasestr		      
-      val _ = TextIO.output(file,teststr)
+		    
+      val _ = TextIO.output(file,"</Test>\n")
       
       val _ = TextIO.closeOut(file)
   in
