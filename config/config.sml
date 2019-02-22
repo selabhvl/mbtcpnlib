@@ -11,7 +11,7 @@ struct
   fun setOutputDir outdir = (tcoutputdir := outdir);
 
   (* for naming file holding a set of test cases *)
-  val confignaming = ref (fn () => "");
+  val confignaming = ref (fn () => "tcs");
   fun setConfigNaming namingfn = (confignaming := namingfn);
   fun getConfigName () = (!confignaming ());
 
