@@ -15,6 +15,8 @@ struct
   fun setConfigNaming namingfn = (confignaming := namingfn);
   fun getConfigName () = (!confignaming ());
 
+  val fileext = ref ".xml";
+  
   (* for naming individual test cases *)
   val tcnaming = ref (fn i => Int.toString i);
   fun setTCNaming namingfn = (tcnaming := namingfn);
@@ -31,9 +33,50 @@ struct
   fun observeTC event = (!tcobserve event);
 
   (* formatting  function *)
-  val tcformat = ref (fn (x:TCEvent) => "");
-  fun setTCformat formatfn = (tcformat := formatfn);
-  fun formatTC event = (!tcformat event);
+  val tceventformat = ref (fn (x:TCEvent) => "");
+  fun setTCeventformat formatfn = (tceventformat := formatfn);
+  fun formatTCevent event = (!tceventformat event);
+
+  val tcformat = ref (fn (inoutevents, testvalues, testoracles) =>
+			 let
+			     val unitteststr = String.concat (List.map formatTCevent inoutevents)
+			     val testvaluesstr = String.concat (List.map formatTCevent testvalues)
+			     val testoraclesstr = String.concat (List.map formatTCevent testoracles)
+			 in
+			     (unitteststr,
+			     (if testvaluesstr <> ""
+			      then "    <TestValues>\n"^testvaluesstr^"    </TestValues>\n"
+			      else ""),
+			     (if testoraclesstr <> ""
+			      then "    <TestOracles>\n"^testoraclesstr^"    </TestOracles>\n"
+			      else ""))
+			 end);
+  
+  fun setTCformat newtcformat = (tcformat := newtcformat);
+  fun TCformat (inoutevents, testvalues, testoracles) = (!tcformat (inoutevents, testvalues, testoracles));
+					 
+  (* formatting embedding each test case *)
+  val tcfn = ref (fn (i,teststr) =>
+		     if (not (Config.getTestcaseevent()))
+		     then "  <TestCase "^(Config.getTCName i)^">\n"^
+			  teststr^
+			  "  </TestCase>\n"
+		     else teststr);
+
+  fun setTCfn testcasefn = (tcfn := testcasefn);
+  fun TCfn (i,teststr) = (!tcfn (i,teststr));
+
+  (* formatting embeddeding each test *)
+  val testfn = ref (fn (testname,teststr) =>
+		       "<Test TestName=\""^testname^"\">\n"^
+		       "  <Configuration>\n"^
+		       Config.formatConfig()^
+		       "  </Configuration>\n"^
+		       teststr^
+		       "</Test>\n");
+
+  fun setTestfn newtestfn = (testfn := newtestfn);
+  fun TestFn testname teststr = (!testfn (testname,teststr));
 
   (* configuration information for the test *)
   val configformat = ref (fn () => "");
