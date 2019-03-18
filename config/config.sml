@@ -15,6 +15,11 @@ struct
   fun setConfigNaming namingfn = (confignaming := namingfn);
   fun getConfigName () = (!confignaming ());
 
+    (* test cases per event *)
+  val testcaseevent = ref false; (* true for single event test case generation *)
+  fun setTestcaseevent bf = (testcaseevent := bf);
+  fun getTestcaseevent () = (!testcaseevent);
+
   val fileext = ref ".xml";
   
   (* for naming individual test cases *)
@@ -57,8 +62,8 @@ struct
 					 
   (* formatting embedding each test case *)
   val tcfn = ref (fn (i,teststr) =>
-		     if (not (Config.getTestcaseevent()))
-		     then "  <TestCase "^(Config.getTCName i)^">\n"^
+		     if (not (getTestcaseevent()))
+		     then "  <TestCase "^(getTCName i)^">\n"^
 			  teststr^
 			  "  </TestCase>\n"
 		     else teststr);
@@ -66,11 +71,16 @@ struct
   fun setTCfn testcasefn = (tcfn := testcasefn);
   fun TCfn (i,teststr) = (!tcfn (i,teststr));
 
+    (* configuration information for the test *)
+  val configformat = ref (fn () => "");
+  fun setConfigformat configformatfn = (configformat := configformatfn);
+  fun formatConfig () = (!configformat ());
+
   (* formatting embeddeding each test *)
   val testfn = ref (fn (testname,teststr) =>
 		       "<Test TestName=\""^testname^"\">\n"^
 		       "  <Configuration>\n"^
-		       Config.formatConfig()^
+		       formatConfig()^
 		       "  </Configuration>\n"^
 		       teststr^
 		       "</Test>\n");
@@ -78,10 +88,6 @@ struct
   fun setTestfn newtestfn = (testfn := newtestfn);
   fun TestFn testname teststr = (!testfn (testname,teststr));
 
-  (* configuration information for the test *)
-  val configformat = ref (fn () => "");
-  fun setConfigformat configformatfn = (configformat := configformatfn);
-  fun formatConfig () = (!configformat ());
 
   (* normalisation function for test case events *)
   val tcnormal = ref (fn (tce : (TCEvent list)) => (tce: TCEvent list));
@@ -91,9 +97,5 @@ struct
   (* TODO: oracle detection and observation *)
   (* may need to go into a seperate monitor *)
 
-  (* test cases per event *)
-  val testcaseevent = ref false; (* true for single event test case generation *)
-  fun setTestcaseevent bf = (testcaseevent := bf);
-  fun getTestcaseevent () = (!testcaseevent);
   
 end;
